@@ -1,0 +1,10 @@
+2023-11-14 17:31:35,310 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: https://localhost:7211
+2023-11-14 17:31:35,750 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5066
+2023-11-14 17:31:35,780 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-11-14 17:31:35,795 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-11-14 17:31:35,802 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: C:\Users\dell\Desktop\Hexaware\training\Project API\EventCalendarSolution\EventCalendarApp\
+2023-11-14 17:35:44,268 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: https://localhost:7211
+2023-11-14 17:35:44,411 [1] INFO Microsoft.Hosting.Lifetime.?[?] - Now listening on: http://localhost:5066
+2023-11-14 17:35:44,427 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Application started. Press Ctrl+C to shut down.
+2023-11-14 17:35:44,436 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Hosting environment: Development
+2023-11-14 17:35:44,440 [1] INFO Microsoft.Hosting.Lifetime.OnApplicationStarted[0] - Content root path: C:\Users\dell\Desktop\Hexaware\training\Project API\EventCalendarSolution\EventCalendarApp\
