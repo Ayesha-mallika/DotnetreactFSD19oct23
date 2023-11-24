@@ -1,0 +1,15 @@
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\bin\Debug\net6.0\ShoppingDALLibrary.deps.json
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\bin\Debug\net6.0\ShoppingDALLibrary.dll
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\bin\Debug\net6.0\ShoppingDALLibrary.pdb
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\bin\Debug\net6.0\ShoppingModelLibrary.dll
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\bin\Debug\net6.0\ShoppingModelLibrary.pdb
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.csproj.AssemblyReference.cache
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.AssemblyInfoInputs.cache
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.AssemblyInfo.cs
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.csproj.CoreCompileInputs.cache
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.csproj.CopyComplete
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.dll
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\refint\ShoppingDALLibrary.dll
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ShoppingDALLibrary.pdb
+C:\Users\dell\Desktop\Hexaware\training\Day 3\ShoppingSolution\ShoppingDALLibrary\obj\Debug\net6.0\ref\ShoppingDALLibrary.dll

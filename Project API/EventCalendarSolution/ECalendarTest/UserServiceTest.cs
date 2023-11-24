@@ -41,10 +41,10 @@ namespace ECalendarTest
                 FirstName = pass,
                 LastName = pass,
                 Password = pass,
-                Role = "Organizer"
+                Role = "User"
             });
             //Action
-            var resulut = userService.Login(new UserDTO { Email = "Test", Password = "test123", Role = "Organizer" });
+            var resulut = userService.Login(new UserDTO { Email = "Test", Password = "test123", Role = "User" });
             //Assert
             Assert.AreEqual("Test", resulut.Email);
         }

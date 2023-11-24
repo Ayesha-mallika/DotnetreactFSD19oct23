@@ -13,10 +13,6 @@ namespace EventCalendarApp.Models
         public string? Role { get; set; }
         public byte[]? Key { get; set; }
 
-        public override string ToString()
-        {
-            return $"{FirstName} {LastName} ({Email})";
-        }
-
+       
     }
 }

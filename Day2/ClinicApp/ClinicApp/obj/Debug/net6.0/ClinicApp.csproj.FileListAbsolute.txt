@@ -1,0 +1,14 @@
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\bin\Debug\net6.0\ClinicApp.exe
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\bin\Debug\net6.0\ClinicApp.deps.json
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\bin\Debug\net6.0\ClinicApp.runtimeconfig.json
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\bin\Debug\net6.0\ClinicApp.dll
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\bin\Debug\net6.0\ClinicApp.pdb
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.AssemblyInfoInputs.cache
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.AssemblyInfo.cs
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.csproj.CoreCompileInputs.cache
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.dll
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\refint\ClinicApp.dll
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.pdb
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ClinicApp.genruntimeconfig.cache
+C:\Users\dell\Desktop\Hexaware\training\Day2\ClinicApp\ClinicApp\obj\Debug\net6.0\ref\ClinicApp.dll

@@ -1,41 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using EventCalendarApp.Models.DTOs;
-using System.Reflection.Metadata.Ecma335;
 
 namespace EventCalendarApp.Models
 {
     public class Event
     {
-
         /// <summary>
         /// it is a model class for events
         /// </summary>
-        public int Id { get; set; }
-        public string title { get; set; }
-        public string Description { get; set; }
-        public DateTime Start_Date { get; set; }
-        public DateTime End_Date { get; set; }
-        public DateTime StartDateTime { get; set; } 
-        public DateTime EndDateTime { get; set; }
-        public string? Location { get; set; }
-        public bool? IsRecurring { get; set; }
-        
-        // Foreign Key for Category
-
+        public int Id { get; set; }//identity GUID
+        public string title { get; set; }//title of the event
+        public string Description { get; set; }//give information about event
+        public string StartDateTime { get; set; }//on which date and on what time the event is occurring
+        public string NotificationDateTime { get; set; }//on which date and time the notification should be send
+        public string? Location { get; set; }//location of an event
+        public bool? IsRecurring { get; set; }//is the event is repeating or not
+        public string Recurring_frequency { get; set; }//if event is repeating what is its frequency
+        public int CategoryId { get; set; } = 0;//Foreign key of category
         [ForeignKey("CategoryId")]
-        [Required(ErrorMessage = "Each event should have single category")]
-        public int CategoryId { get; set; }
         public Category? Category { get; set; }
-
-
-       /* [ForeignKey("UserEmail")]
-        public string UserEmail { get; set; }
-        public UserDTO? User { get; set; }
-
-        //one-to-one relationship
-        //public Reminder? Reminder { get; set; }*/
-
+        public string Email { get; set; }//Foreign key of user
+        [ForeignKey("Email")]
+        public User? User { get; set; }
     }
-    
 }

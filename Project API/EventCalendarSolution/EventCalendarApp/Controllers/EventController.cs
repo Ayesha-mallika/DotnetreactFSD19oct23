@@ -6,7 +6,6 @@ using EventCalendarApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using EventCalendarApp.Models.DTOs;
 
 namespace EventCalendarApp.Controllers
 {
@@ -23,12 +22,12 @@ namespace EventCalendarApp.Controllers
             _logger = logger;
         }
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult Get(string userId)
         {
             string errorMessage = string.Empty;
             try
             {
-                var result = _eventService.GetEvents();
+                var result = _eventService.GetEvents(userId);
                 _logger.LogInformation("Event listed");
                 return Ok(result);
             }
@@ -39,7 +38,7 @@ namespace EventCalendarApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "organizer")]
         [HttpPost]
         public ActionResult Create(Event events)
         {
@@ -47,7 +46,6 @@ namespace EventCalendarApp.Controllers
             try
             {
                 var result = _eventService.Add(events);
-                
                 return Ok(result);
             }
             catch (Exception e)
@@ -71,7 +69,7 @@ namespace EventCalendarApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-        
+
         [HttpDelete]
         public ActionResult Remove(Event events)
         {

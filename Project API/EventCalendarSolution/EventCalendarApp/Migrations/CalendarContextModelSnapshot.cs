@@ -17,7 +17,7 @@ namespace EventCalendarApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.24")
+                .HasAnnotation("ProductVersion", "6.0.25")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -30,11 +30,11 @@ namespace EventCalendarApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Name")
+                    b.Property<string>("color")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("color")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -58,11 +58,9 @@ namespace EventCalendarApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("End_Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool?>("IsRecurring")
                         .HasColumnType("bit");
@@ -70,11 +68,17 @@ namespace EventCalendarApp.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDateTime")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("NotificationDateTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Start_Date")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Recurring_frequency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartDateTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("title")
                         .IsRequired()
@@ -84,66 +88,15 @@ namespace EventCalendarApp.Migrations
 
                     b.HasIndex("CategoryId");
 
+                    b.HasIndex("Email");
+
                     b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.Notification", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("NotificationDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.ToTable("Notifications");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.Reminder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("EventId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ReminderDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EventId");
-
-                    b.ToTable("Reminders");
                 });
 
             modelBuilder.Entity("EventCalendarApp.Models.User", b =>
                 {
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("EventId")
-                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -164,59 +117,26 @@ namespace EventCalendarApp.Migrations
 
                     b.HasKey("Email");
 
-                    b.HasIndex("EventId");
-
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("EventCalendarApp.Models.Event", b =>
                 {
                     b.HasOne("EventCalendarApp.Models.Category", "Category")
-                        .WithMany("Events")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EventCalendarApp.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("Email")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Category");
-                });
 
-            modelBuilder.Entity("EventCalendarApp.Models.Notification", b =>
-                {
-                    b.HasOne("EventCalendarApp.Models.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.Reminder", b =>
-                {
-                    b.HasOne("EventCalendarApp.Models.Event", "Event")
-                        .WithMany()
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Event");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.User", b =>
-                {
-                    b.HasOne("EventCalendarApp.Models.Event", null)
-                        .WithMany("SharedWith")
-                        .HasForeignKey("EventId");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.Category", b =>
-                {
-                    b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("EventCalendarApp.Models.Event", b =>
-                {
-                    b.Navigation("SharedWith");
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

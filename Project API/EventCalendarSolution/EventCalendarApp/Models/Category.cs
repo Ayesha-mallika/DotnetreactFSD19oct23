@@ -1,15 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EventCalendarApp.Models
 {
     public class Category
     {
-        [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string color { get; set; }
-
-        public ICollection<Event>? Events { get; set; }
-
+        public int Id { get; set; }//identity GUID
+        public string name { get; set; }//which type of category
+        public string color { get; set; }//color of the category
+        //public int EventId { get; set; }
+        //[ForeignKey("EventId")]
+        //public Event? Event { get; set; }
     }
 }

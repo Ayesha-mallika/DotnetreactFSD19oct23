@@ -1,4 +1,4 @@
-﻿using EventCalendarApp.Models;
+﻿/*using EventCalendarApp.Models;
 using System.Collections.Generic;
 
 namespace EventCalendarApp.Interfaces
@@ -13,3 +13,4 @@ namespace EventCalendarApp.Interfaces
         // Reminder DeleteReminder(int reminderId);
     }
 }
+*/

@@ -1,4 +1,4 @@
-﻿using EventCalendarApp.Models;
+﻿/*using EventCalendarApp.Models;
 
 namespace EventCalendarApp.Interfaces
 {
@@ -7,7 +7,8 @@ namespace EventCalendarApp.Interfaces
         Notification Add(Notification notification);
         public List<Notification> GetNotifications();
         //Notification SendNotification(Notification notification);
-        //IList<Notification> GetNotificationsByUser(string email);
+        public void SendNotificationEmail(string recipientEmail, string subject, string body);
 
     }
 }
+*/

@@ -12,20 +12,17 @@ namespace EventCalendarApp.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
 
-        public DbSet<Reminder> Reminders { get; set; }
-        
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // relationship between Event and Category
             modelBuilder.Entity<Event>()
-                .HasOne<Category>(e => e.Category)
-                .WithMany(c => c.Events)
+                .HasOne<Category>(e => e.Categories)
+                .WithMany(c => c.Event)
                 .HasForeignKey(e => e.CategoryId);
 
-            modelBuilder.Entity<Event>(events =>
+            /*modelBuilder.Entity<Event>(events =>
             {
                 events.HasKey(e => e.Id);
             });
@@ -39,7 +36,7 @@ namespace EventCalendarApp.Contexts
                 reminder.HasKey(r => r.Id);
             });
             
-            /*modelBuilder.Entity<Notification>()
+            modelBuilder.Entity<Notification>()
                 .HasOne(n => n.Reminder)
                 .WithMany(r => r.Notifications)
                 .HasForeignKey(n => n.ReminderId)
@@ -49,9 +46,9 @@ namespace EventCalendarApp.Contexts
                 .HasOne(n => n.User)
                 .WithMany(u => u.Notifications)
                 .HasForeignKey(n => n.Email)
-                .OnDelete(DeleteBehavior.Cascade);*/
+                .OnDelete(DeleteBehavior.Cascade);
 
 
-        }
+        }*/
     }
 }

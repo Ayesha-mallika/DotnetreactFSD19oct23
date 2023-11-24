@@ -51,6 +51,16 @@ namespace EventCalendarApp
                      }
                  });
             });
+
+            #region CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("reactApp", opts =>
+                {
+                    opts.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                });
+            });
+            #endregion
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -76,10 +86,10 @@ namespace EventCalendarApp
             builder.Services.AddScoped<IRepository<int, Category>, CategoryRepository>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
 
-            builder.Services.AddScoped<IRepository<int, Reminder>, ReminderRepository>();
+            /*builder.Services.AddScoped<IRepository<int, Reminder>, ReminderRepository>();
             builder.Services.AddScoped<IReminderService, ReminderService>();
             builder.Services.AddScoped<IRepository<int, Notification>, NotificationRepository>();
-            builder.Services.AddScoped<INotificationService, NotificationService>();
+            builder.Services.AddScoped<INotificationService, NotificationService>();*/
 
            
 
@@ -93,7 +103,7 @@ namespace EventCalendarApp
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("reactApp");
             app.UseAuthentication();
             app.UseAuthorization();
 

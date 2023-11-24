@@ -39,7 +39,7 @@ namespace EventCalendarApp.Services
         /// <param name="category"></param>
         /// <returns></returns>
         /// <exception cref="NameAlreadyExist"></exception>
-         public Category Add(Category category)
+         /*public Category Add(Category category)
          {
              if (IsCategoryNameUnique(category.Name))
              {
@@ -57,14 +57,14 @@ namespace EventCalendarApp.Services
 
              return !_categoryRepository.GetAll().Any(c => c.Name == categoryName);
 
-         }
+         }*/
 
         
-       /* public Category Add(Category category)
+        public Category Add(Category category)
         {
             var result = _categoryRepository.Add(category);
             return result;
-        }*/
+        }
         
     }
 

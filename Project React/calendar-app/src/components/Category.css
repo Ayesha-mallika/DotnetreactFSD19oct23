@@ -1,0 +1,22 @@
+/* Category.css */
+
+.alert-info {
+    background-color: #d1ecf1; /* Light blue background color */
+    border: 1px solid #bee5eb; /* Border color */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-info {
+    background-color: #0dcaf0; /* Blue button color */
+    color: #fff; /* White text color */
+    padding: 8px 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .btn-info:hover {
+    background-color: #007bff; /* Darker blue on hover */
+  }

@@ -4,11 +4,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using EventCalendarApp.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace EventCalendarApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
@@ -32,9 +34,9 @@ namespace EventCalendarApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
-        [Route("Create")]
+       // [Route("Create")]
         public ActionResult Create(Category category)
         {
             string errorMessage = string.Empty;
@@ -80,8 +82,7 @@ namespace EventCalendarApp.Controllers
                 errorMessage = e.Message;
             }
             return BadRequest(errorMessage);
-        }
-    }
-}*/
+        }*/
+   
     }
 }
