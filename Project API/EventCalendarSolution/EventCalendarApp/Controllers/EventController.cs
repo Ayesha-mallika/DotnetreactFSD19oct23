@@ -4,6 +4,7 @@ using EventCalendarApp.Models;
 using EventCalendarApp.Repositories;
 using EventCalendarApp.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace EventCalendarApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class EventController : ControllerBase
     {
         private readonly IEventService _eventService;

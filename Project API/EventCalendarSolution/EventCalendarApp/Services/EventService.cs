@@ -24,11 +24,13 @@ namespace EventCalendarApp.Services
         /// <returns>returns event</returns>
         public Event Add(Event events)
         {
-            var result = _eventRepository.Add(events);
-            ScheduleAndSendEmail(DateTime.Parse(result.NotificationDateTime), result);
+            //ScheduleAndSendEmail(DateTime.Parse(result.NotificationDateTime), result);
             // ScheduleAndSendEmail(DateTime.Parse(result.StartDateTime).Min(-5), result);
+            //return result;
+            var result = _eventRepository.Add(events);
+            // Assuming ScheduleAndSendEmail has a signature like: void ScheduleAndSendEmail(DateTime notificationDateTime, EventResult result)
+            ScheduleAndSendEmail(result.NotificationDateTime, result);
             return result;
-
         }
         public void ScheduleAndSendEmail(DateTime targetTime, Event events)
         {
@@ -41,7 +43,7 @@ namespace EventCalendarApp.Services
                 // Your email sending logic here
                 string to = events.Email;
                 string subject = "Event Scheduled Email";
-                string body = $"You have {events.title} at {events.StartDateTime}. \n Don't miss it out.";
+                string body = ($"Dear All \n Greetings!!! \nYou have '{events.title}' starts from '{events.StartDateTime}' and ended at '{events.EndDateTime}' \n Don't miss it ");
 
                 SendNotificationEmail(to, subject, body);
             }, null, delayMilliseconds, Timeout.Infinite);
@@ -54,11 +56,13 @@ namespace EventCalendarApp.Services
 
             // Recipient email
             string toEmail = recipientEmail;
+            //string toSharedEventWith = recipientEmail;
 
             // Create the email message
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress(email);
             mail.To.Add(toEmail);
+            //mail.To.Add(toSharedEventWith);
             mail.Subject = subject;
             mail.Body = body;
 
@@ -72,6 +76,34 @@ namespace EventCalendarApp.Services
             // Send the email
             smtpClient.Send(mail);
 
+        }
+        /// <summary>
+        /// Share an event with specified email addresses
+        /// </summary>
+        /// <param name="eventId">The id of the event to be shared</param>
+        /// <param name="recipientEmails">List of recipient emails</param>
+        /// <returns>True if sharing is successful, false otherwise</returns>
+        public bool ShareEvent(int eventId, List<string> recipientEmails)
+        {
+            // Retrieve the event to be shared
+            var eventToShare = _eventRepository.GetById(eventId);
+
+            if (eventToShare != null)
+            {
+                // Customize the email subject and body for sharing
+                string subject = "Shared Event: " + eventToShare.title;
+                string body = $"Dear Recipient,\n\nYou have been invited to the event '{eventToShare.title}' scheduled for {eventToShare.StartDateTime}. Don't miss it!";
+
+                // Loop through recipient emails and send individual emails
+                foreach (var recipientEmail in recipientEmails)
+                {
+                    SendNotificationEmail(recipientEmail, subject, body);
+                }
+
+                return true; // Sharing successful
+            }
+
+            return false; // Event not found
         }
         /// <summary>
         /// List of all created events
@@ -89,6 +121,16 @@ namespace EventCalendarApp.Services
             }
             throw new NoEventsAvailableException();
         }
+        //public IList<Event> GetPublicEvents(string privacy)
+        //{
+        //    var events = _eventRepository.GetAll().Where(e =>e.privacy == "public").ToList();
+        //    if (events != null)
+        //    {
+        //        return events;
+        //    }
+        //    throw new NoEventsAvailableException();
+        //}
+
         /// <summary>
         /// removing the events from repository
         /// </summary>
@@ -107,8 +149,8 @@ namespace EventCalendarApp.Services
         /// <summary>
         /// updating the events from repository
         /// </summary>
-        /// <param name="events"></param>
-        /// <returns></returns>
+        /// <param name="events">get event from id and event to be updated</param>
+        /// <returns>updated event</returns>
         public Event Update(Event events)
         {
             var EventId = _eventRepository.GetAll().FirstOrDefault(e => e.Id == events.Id);

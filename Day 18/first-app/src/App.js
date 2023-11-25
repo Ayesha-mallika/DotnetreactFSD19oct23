@@ -6,7 +6,7 @@ import RegisterUser from './components/RegisterUser';
 function App() {
   return (
     <div className="App">
-     <RegisterUser/>
+     <AddProduct/>
     </div>
   );
 }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventCalendarApp.Migrations
 {
-    public partial class ghjg : Migration
+    public partial class safe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,11 +47,12 @@ namespace EventCalendarApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StartDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NotificationDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NotificationDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRecurring = table.Column<bool>(type: "bit", nullable: true),
-                    Recurring_frequency = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Recurring_frequency = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
