@@ -1,11 +1,13 @@
 ﻿using EventCalendarApp.Interfaces;
 using EventCalendarApp.Models.DTOs;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventCalendarApp.Controllers
 {
+    [EnableCors("reactApp")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

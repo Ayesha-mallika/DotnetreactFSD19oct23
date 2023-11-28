@@ -31,13 +31,15 @@ function RegisterUser(){
             return;
         }
         
-        axios.post("http://localhost:5083/api/Customer",{
+        axios.post("http://localhost:5083/api/Customer/Login",{
             username: username,
             role:	role,
             password:password
     })
         .then((userData)=>{
-            console.log(userData)
+            var token = userData.data.token;
+            localStorage.setItem("token",token);
+
         })
         .catch((err)=>{
             console.log(err)

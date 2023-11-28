@@ -14,37 +14,32 @@ namespace EventCalendarApp.Repositories
             _context = context;
         }
         /// <summary>
-        /// adding the events 
+        /// Add the event or to create an event
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">event object that has to be added</param>
+        /// <returns>entity</returns>
         public Event Add(Event entity)
         {
             _context.Events.Add(entity);
-            _context.SaveChanges();
+            _context.SaveChanges(); //this will make the change in Db
             return entity;
         }
         /// <summary>
-        /// deleting the events by Id
+        /// to remove event by its id
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="key">the id of the event to be deleted</param>
+        /// <returns>the deleted event</returns>
         public Event Delete(int key)
         {
             var events = GetById(key);
             if (events != null)
             {
                 _context.Events.Remove(events);
-                _context.SaveChanges();
+                _context.SaveChanges();//this will delete the event in db
                 return events;
             }
             return null;
         }
-        /// <summary>
-        /// getting all events
-        /// </summary>
-        /// <returns></returns>
-
         public IList<Event> GetAll()
         {
             if (_context.Events.Count() == 0)
@@ -57,17 +52,31 @@ namespace EventCalendarApp.Repositories
             var events = _context.Events.SingleOrDefault(e => e.Id == key);
             return events;
         }
-        /// <summary>
-        /// Updating the evnets
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+
+        //public Event Update(Event entity)
+        //{
+        //    var events = GetById(entity.Id);
+        //    if (events != null)
+        //    {
+        //        _context.Entry<Event>(events).State = EntityState.Modified;
+        //        _context.SaveChanges();
+        //        return events;
+        //    }
+        //    return null;
+        //}
         public Event Update(Event entity)
         {
             var events = GetById(entity.Id);
             if (events != null)
             {
-                _context.Entry<Event>(events).State = EntityState.Modified;
+                // Update properties as needed
+                events.title = entity.title;
+                events.Description = entity.Description;
+                events.StartDateTime = entity.StartDateTime;
+                events.NotificationDateTime = entity.NotificationDateTime;
+                events.Location = entity.Location;
+                events.IsRecurring = entity.IsRecurring;
+                _context.Events.Update(events);
                 _context.SaveChanges();
                 return events;
             }
