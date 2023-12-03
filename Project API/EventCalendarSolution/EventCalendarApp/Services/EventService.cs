@@ -25,7 +25,7 @@ namespace EventCalendarApp.Services
         public Event Add(Event events)
         {
             //ScheduleAndSendEmail(DateTime.Parse(result.NotificationDateTime), result);
-            // ScheduleAndSendEmail(DateTime.Parse(result.StartDateTime).Min(-5), result);
+            //// ScheduleAndSendEmail(DateTime.Parse(result.StartDateTime).Min(-5), result);
             //return result;
             var result = _eventRepository.Add(events);
             // Assuming ScheduleAndSendEmail has a signature like: void ScheduleAndSendEmail(DateTime notificationDateTime, EventResult result)
@@ -50,32 +50,33 @@ namespace EventCalendarApp.Services
         }
         public void SendNotificationEmail(string recipientEmail, string subject, string body)
         {
+            try
+            {
+                string email = "ayeshajasmeen79@gmail.com";
+                string password = "aoamaglwoxwpmlxh";
 
-            string email = "ayeshajasmeen79@gmail.com";
-            string password = "aoamaglwoxwpmlxh";
+                // Create the email message
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(email);
+                mail.To.Add(recipientEmail);
+                mail.Subject = subject;
+                mail.Body = body;
 
-            // Recipient email
-            string toEmail = recipientEmail;
-            //string toSharedEventWith = recipientEmail;
+                // Set up SMTP client
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.Credentials = new NetworkCredential(email, password);
+                smtpClient.EnableSsl = true;
+                smtpClient.UseDefaultCredentials = false;
 
-            // Create the email message
-            MailMessage mail = new MailMessage();
-            mail.From = new MailAddress(email);
-            mail.To.Add(toEmail);
-            //mail.To.Add(toSharedEventWith);
-            mail.Subject = subject;
-            mail.Body = body;
-
-            // Set up SMTP client
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            smtpClient.Port = 587;
-            smtpClient.Credentials = new NetworkCredential(email, password);
-            smtpClient.EnableSsl = true;
-            smtpClient.UseDefaultCredentials = false;
-
-            // Send the email
-            smtpClient.Send(mail);
-
+                // Send the email
+                smtpClient.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it appropriately
+                Console.WriteLine($"Error sending email: {ex.Message}");
+            }
         }
         /// <summary>
         /// Share an event with specified email addresses
@@ -87,7 +88,6 @@ namespace EventCalendarApp.Services
         {
             // Retrieve the event to be shared
             var eventToShare = _eventRepository.GetById(eventId);
-
             if (eventToShare != null)
             {
                 // Customize the email subject and body for sharing
@@ -121,15 +121,15 @@ namespace EventCalendarApp.Services
             }
             throw new NoEventsAvailableException();
         }
-        //public IList<Event> GetPublicEvents(string privacy)
-        //{
-        //    var events = _eventRepository.GetAll().Where(e =>e.privacy == "public").ToList();
-        //    if (events != null)
-        //    {
-        //        return events;
-        //    }
-        //    throw new NoEventsAvailableException();
-        //}
+        public IList<Event> GetPublicEvents(string access)
+        {
+            var events = _eventRepository.GetAll().Where(e => e.Access == access).ToList();
+            if (events != null)
+            {
+                return events;
+            }
+            throw new NoEventsAvailableException();
+        }
 
         /// <summary>
         /// removing the events from repository

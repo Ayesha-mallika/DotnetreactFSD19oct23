@@ -16,8 +16,8 @@ namespace EventCalendarApp.Models
         public string? Location { get; set; }//location of an event
         public bool? IsRecurring { get; set; }//is the event is repeating or not
         public string? Recurring_frequency { get; set; }//if event is repeating what is its frequency
-        //public string ShareEventWith { get; set; } = string.Empty;
-        //public string? privacy { get; set; }//whether the event should be in public or private
+        public string? ShareEventWith { get; set; } = string.Empty;
+        public string? Access { get; set; }//whether the event should be in public or private
         public int CategoryId { get; set; } = 0;//Foreign key of category
         [ForeignKey("CategoryId")]
         public Category? Category { get; set; }

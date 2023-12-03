@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventCalendarApp.Migrations
 {
-    public partial class safe : Migration
+    public partial class eve : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -53,6 +53,8 @@ namespace EventCalendarApp.Migrations
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRecurring = table.Column<bool>(type: "bit", nullable: true),
                     Recurring_frequency = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ShareEventWith = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Access = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },

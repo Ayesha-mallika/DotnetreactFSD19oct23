@@ -1,18 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-import AddEvents from './components/AddEvents';
-import Events from './components/Events';
-import AddCategory from './components/AddCategory';
-import Category from './components/Category';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import RegisterUser from './components/RegisterUser';
+import Events from './components/Events';
+import Category from './components/Category';
+import Menu from './components/Menu';
 import LoginUser from './components/LoginUser';
-import PutEvents from './components/PutEvents';
-import DeleteEvents from './components/DeleteEvents';
+import ParentComponent from './components/ParentComponent';
+import MyCalendar from './components/MyCalendar';
+import AddEvent from './components/AddEvent';
+
 function App() {
+
   return (
-    <div className="App">
-      <Events/>
-    
+    <div>
+    { <BrowserRouter>
+      <Menu/>
+        <Routes>
+          
+          <Route path="loginUser" element={<LoginUser/>} />
+          <Route path="/" element={<RegisterUser/>} />
+          <Route path="events" element={<Events/>} />
+          <Route path="category" element={<Category/>} />
+          <Route path="MyCalendar" element={<MyCalendar/>} />
+          
+        </Routes>  
+      </BrowserRouter> }
     </div>
   );
 }

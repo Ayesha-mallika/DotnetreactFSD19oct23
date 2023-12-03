@@ -1,7 +1,7 @@
 import { useState } from "react";
 import './AddEvent.css';
 
-function AddEvents(){
+function AddEvent(){
     const [title,setTitle] = useState("");
     const [description,setDescription] = useState("");
     const [startdatetime,setStartDateTime] = useState("");
@@ -10,6 +10,8 @@ function AddEvents(){
     const[location,setLocation]=useState("");
     const [isrecurring,setIsRecurring] = useState(false);
     const[recurring_frequency,setRecurring_frequency] = useState("");
+    const[shareeventwith,setShareEventWith]=useState("");
+    const[access,setAccess]=useState("");
     const[categoryId,setCategoryId] = useState("");
     const[email,setEmail]=useState("");
 
@@ -25,6 +27,8 @@ function AddEvents(){
         "location" : location,
         "isrecurring":isrecurring,
         "recurring_frequency" : recurring_frequency,
+        "shareeventwith": shareeventwith,
+        "access": access,
         "categoryId":categoryId,
         "email":email
         }
@@ -52,7 +56,7 @@ function AddEvents(){
             <label className="form-control" for="ptitle">Title</label>
             <input id="ptitle" type="text" className="form-control" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
             <br/>
-            <label className="form-control" htmlFor="pdescription">Description</label>
+            <label className="form-control" for="pdescription">Description</label>
             <textarea id="pdescription" className="form-control" value={description} onChange={(e) => {setDescription(e.target.value)}}/>
             <br/>
             <label className="form-control"  for="pstartdatetime">StartDateTime</label>
@@ -67,7 +71,7 @@ function AddEvents(){
             <label className="form-control"  for="plocation">Location</label>
             <input id="plocation" type="text" className="form-control" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
             <br/>
-            <label className="form-boolean">IsRecurring</label><br/>
+            <label className="form-boolean">IsRecurring</label>
             <select className="form-boolean" onChange={(e) => setIsRecurring(e.target.value === 'true')}>
               <option value="false">No</option>
               <option value="true">Yes</option>
@@ -78,19 +82,23 @@ function AddEvents(){
                 <br/>
             <div className="form-group">
             <label for="recurring_frequency">Recurring_frequency</label>
-            <select
-              id="recurring_frequency"
-              className="form-control"
-              value={recurring_frequency}
+            <select id="recurring_frequency" className="form-control" value={recurring_frequency}
               onChange={(e) => setRecurring_frequency(e.target.value)}
             >
               <option value="daily">Daily</option>
               <option value="weekly">Weekly</option>
               <option value="monthly">Monthly</option>
+              <option value="custom">Custom</option>
             </select>
             </div>
             </div>
             )}
+            <br/>
+            <label className="form-control"  for="pshareeventwith">ShareEventWith</label>
+            <input id="pshareeventwith" type="text" className="form-control" value={shareeventwith} onChange={(e)=>{setShareEventWith(e.target.value)}}/>
+            <br/>
+            <label className="form-control"  for="paccess">Access</label>
+            <input id="paccess" type="text" className="form-control" value={access} onChange={(e)=>{setAccess(e.target.value)}}/>
             <br/>
             <label className="form-control"  for="pcategoryId">CategoryId</label>
             <input id="pcategoryId" type="number" className="form-control" value={categoryId} onChange={(e)=>{setCategoryId(e.target.value)}}/>
@@ -99,8 +107,8 @@ function AddEvents(){
             <input id="pemail" type="text" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             <br/>
             <button onClick={clickAdd} className="btn btn-primary">Add Event</button>
-       </div>
+        </div>
     );
 }
 
-export default AddEvents;
+export default AddEvent;

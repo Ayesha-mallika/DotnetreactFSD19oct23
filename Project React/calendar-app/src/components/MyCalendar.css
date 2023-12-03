@@ -1,0 +1,105 @@
+/* Add your global styles if needed */
+
+.react-big-calendar {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.react-big-calendar__navigation button {
+  color: #6f48eb;
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.react-big-calendar__navigation button:enabled:hover,
+.react-big-calendar__navigation button:enabled:focus {
+  background-color: #d5d5f5;
+}
+
+.react-big-calendar__navigation button[disabled] {
+  background-color: #f0f0f0;
+}
+
+.react-big-calendar_month-viewdays_day {
+  color: #333;
+}
+
+.react-big-calendar_month-viewdays_day--weekend {
+  color: #d10000;
+}
+
+.react-big-calendar__tile:enabled:hover,
+.react-big-calendar__tile:enabled:focus {
+  background: #d5d5f5;
+  color: #6f48eb;
+  border-radius: 6px;
+}
+
+.react-big-calendar__tile--now {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+}
+
+.react-big-calendar__tile--now:enabled:hover,
+.react-big-calendar__tile--now:enabled:focus {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+}
+
+.react-big-calendar__tile--hasActive:enabled:hover,
+.react-big-calendar__tile--hasActive:enabled:focus {
+  background: #d5d5f5;
+}
+
+.react-big-calendar__tile--active {
+  background: #6f48eb;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+}
+
+.react-big-calendar__tile--active:enabled:hover,
+.react-big-calendar__tile--active:enabled:focus {
+  background: #6f48eb;
+  color: white;
+}
+
+.react-big-calendar--selectRange .react-big-calendar__tile--hover {
+  background-color: #d5d5f5;
+}
+
+.react-big-calendar__tile--range {
+  background: #d5d5f5;
+  color: #6f48eb;
+  border-radius: 10px;
+}
+
+.react-big-calendar__tile--rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #6f48eb;
+  color: white;
+}
+
+.react-big-calendar__tile--rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: #6f48eb;
+  color: white;
+}

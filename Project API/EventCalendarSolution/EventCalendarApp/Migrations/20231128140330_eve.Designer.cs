@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventCalendarApp.Migrations
 {
     [DbContext(typeof(CalendarContext))]
-    [Migration("20231125105142_safe")]
-    partial class safe
+    [Migration("20231128140330_eve")]
+    partial class eve
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -53,6 +53,9 @@ namespace EventCalendarApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Access")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -77,6 +80,9 @@ namespace EventCalendarApp.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Recurring_frequency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShareEventWith")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDateTime")
