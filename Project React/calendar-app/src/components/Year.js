@@ -59,7 +59,7 @@ function CalendarDate(props) {
 
   return (
     <button
-      className={date in-month ${today}}
+      className={`date in-month ${today}`}
       onClick={() => props.onClick(dateToRender)}>
       {dateToRender.date()}
     </button>
@@ -104,7 +104,7 @@ class Calendar extends React.Component {
                 dateToRender={date}
                 dateOfMonth={this.state.calendar.currentDate}
                 onClick={date =>
-                  alert(Will go to daily-view of ${date.format('YYYY-MM-DD')})
+                  alert(`Will go to daily-view of ${date.format('YYYY-MM-DD')}`)
                 }
               />
             ))}

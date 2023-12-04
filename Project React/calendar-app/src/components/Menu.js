@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import './Menu.css';
 
 function Menu(){
+  const logout=()=>{
+    localStorage.clear();
+   // navigate('/Home');
+    window.location.reload();
+
+}
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
   
@@ -21,6 +27,9 @@ function Menu(){
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/category" >Category</Link>
+            </li>
+            <li className="nav-item">
+            <Link class="dropdown-item" onClick={logout}>logout</Link>
             </li>
             
           </ul>

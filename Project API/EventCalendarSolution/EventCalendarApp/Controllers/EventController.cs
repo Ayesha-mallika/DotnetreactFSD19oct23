@@ -57,7 +57,7 @@ namespace EventCalendarApp.Controllers
             }
             return BadRequest(errorMessage);
         }
-        //[Authorize(Roles = "User")]
+        [Authorize(Roles = "User")]
         [HttpPost]
         public ActionResult Create(Event events)
         {
@@ -102,13 +102,13 @@ namespace EventCalendarApp.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Remove(Event events)
+        public ActionResult Remove(int Id)
         {
             string errorMessage = string.Empty;
             try
             {
-                var result = _eventService.Remove(events);
-                return Ok(events);
+                var result = _eventService.Remove(Id);
+                return Ok("you deleted successfully");
             }
             catch (EventsCantRemoveException e)
             {

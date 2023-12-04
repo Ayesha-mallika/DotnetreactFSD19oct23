@@ -22,7 +22,7 @@ namespace EventCalendarApp.Services
             var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.NameId,user.Email),
-                //new Claim("role",user.Role)
+                new Claim("role",user.Role)
             };
             var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescription = new SecurityTokenDescriptor

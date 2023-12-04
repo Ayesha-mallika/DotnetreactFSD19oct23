@@ -10,13 +10,13 @@ namespace EventCalendarApp.Interfaces
         /// interface for EventService
         /// </summary>
         /// <returns></returns>
-        List<IGrouping<int, Event>> GetEvents(string userId);
+        List<Event> GetEvents(string userId);
 
-        public bool ShareEvent(int eventId, List<string> recipientEmails);
+        bool ShareEvent(int eventId, List<string> recipientEmails);
 
         IList<Event> GetPublicEvents(string Access);
         Event Add(Event events);
-        Event Remove(Event events);
+        Event Remove(int Id);
         Event Update(Event events);
     }
 }

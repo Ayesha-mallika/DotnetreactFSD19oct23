@@ -1,18 +1,18 @@
 import { useState } from "react";
 import './AddEvent.css';
 
-function PutEvents(){
-    const [Id,setId] = useState("");
-    const [title,setTitle] = useState("");
-    const [description,setDescription] = useState("");
-    const [startdatetime,setStartDateTime] = useState("");
-    const [enddatetime,setEndDateTime] = useState("");
-    const [notificationdatetime,setNotificationDateTime] = useState("");
-    const[location,setLocation]=useState("");
+function PutEvents({event}){
+    const [Id,setId] = useState(event.id);
+    const [title,setTitle] = useState(event.title);
+    const [description,setDescription] = useState(event.description);
+    const [startdatetime,setStartDateTime] = useState(event.startDateTime);
+    const [enddatetime,setEndDateTime] = useState(event.endDateTime);
+    const [notificationdatetime,setNotificationDateTime] = useState(event.notificationDateTime);
+    const[location,setLocation]=useState(event.location);
     const [isrecurring,setIsRecurring] = useState(false);
-    const[recurring_frequency,setRecurring_frequency] = useState("");
-    const[categoryId,setCategoryId] = useState("");
-    const[email,setEmail]=useState("");
+    const[recurring_frequency,setRecurring_frequency] = useState(event.recurring_frequency);
+    const[categoryId,setCategoryId] = useState(event.categoryId);
+    const[email,setEmail]=useState(event.email);
 
     var event;
     var clickAdd = ()=>{
@@ -45,6 +45,28 @@ function PutEvents(){
         ).catch((e)=>{
             console.log(e)
         })
+    }
+    const Delete=()=>{
+        alert('You clicked the button');
+        event={
+         "Id":event.id
+         
+         }
+         console.log(event);
+         fetch('https://localhost:7211/api/Event',{
+             method:'DELETE',
+             headers:{
+                 'Accept':'application/json',
+                 'Content-Type':'application/json'
+             },
+             body:JSON.stringify(event)
+         }).then(
+             ()=>{
+                 alert("Event Deleted");
+             }
+         ).catch((e)=>{
+             console.log(e)
+         })
     }
 
     return(
@@ -104,6 +126,7 @@ function PutEvents(){
             <input id="pemail" type="text" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             <br/>
             <button onClick={clickAdd} className="btn btn-primary">Update Event</button>
+            <button onClick={Delete} className="btn btn-danger">Delete Event</button>
        </div>
     );
 }

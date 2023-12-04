@@ -111,13 +111,13 @@ namespace EventCalendarApp.Services
         /// <param name="userId">get the events list of specific user</param>
         /// <returns></returns>
         /// <exception cref="NoEventsAvailableException"></exception>
-        public List<IGrouping<int, Event>> GetEvents(string userId)
+        public List< Event> GetEvents(string userId)
         {
             var events = _eventRepository.GetAll().Where(c => c.Email == userId).ToList();
-            var category = events.GroupBy(c => c.CategoryId).ToList();
-            if (category != null)
+           // var category = events.GroupBy(c => c.CategoryId).ToList();
+            if (events != null)
             {
-                return category;
+                return events;
             }
             throw new NoEventsAvailableException();
         }
@@ -136,9 +136,9 @@ namespace EventCalendarApp.Services
         /// </summary>
         /// <param name="events">from id event to be deleted</param>
         /// <returns>deleted event</returns>
-        public Event Remove(Event events)
+        public Event Remove(int Id)
         {
-            var EventId = _eventRepository.GetAll().FirstOrDefault(e => e.Id == events.Id);
+            var EventId = _eventRepository.GetAll().FirstOrDefault(e => e.Id == Id);
             if (EventId != null)
             {
                 var result = _eventRepository.Delete(EventId.Id);

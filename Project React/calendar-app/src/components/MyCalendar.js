@@ -6,20 +6,18 @@ import Year from './Year';
 import DisplayEvents from './DisplayEvents';
 import Popup from 'reactjs-popup';
 import AddEvent from './AddEvent';
+import PutEvent from './PutEvents';
+
+
 
 const localizer = momentLocalizer(moment);
 
 function MyCalendar({ events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showAddEventPopup, setShowAddEventPopup] = useState(false);
-  const[updateEvent,setUpdateEvent]=useState(null);
 
-  const openPopup = (event, isUpdate = false) => {
-    if (isUpdate) {
-      setUpdateEvent(event);
-    } else {
-      setSelectedEvent(event);
-    }
+  const openPopup = (event) => {
+    setSelectedEvent(event);
   };
 
   const closePopup = () => {
@@ -27,20 +25,41 @@ function MyCalendar({ events }) {
     setShowAddEventPopup(false);
   };
 
+  const handleAddEvent = (newEvent) => {
+    // Handle adding the new event to your events array or backend
+    // You might need to pass the newEvent to your calendar component
+    // to trigger a re-render with the added data
+    // For example:
+    // addEventFunction(newEvent);
+
+    // Close the popup or reset the form, etc.
+    closePopup();
+  };
+
+  const handleUpdateEvent = (updatedEvent) => {
+    // Handle updating the event in your events array or backend
+    // You might need to pass the updatedEvent to your calendar component
+    // to trigger a re-render with the updated data
+    // For example:
+    // updateEventFunction(updatedEvent);
+
+    // Close the popup or reset the form, etc.
+    closePopup();
+  };
+
   const renderPopup = () => {
-    if (selectedEvent) {
+    if (showAddEventPopup) {
       return (
-        <Popup open={selectedEvent !== null} onClose={closePopup} position="right center">
-          <DisplayEvents event={selectedEvent} />
-          <button onClick={() => openPopup(selectedEvent, true)}>Update Event</button>
+        <Popup open={showAddEventPopup} onClose={closePopup} position="right center">
+          <AddEvent onAddEvent={handleAddEvent} />
           <button onClick={closePopup}>Close</button>
         </Popup>
       );
-    } else if (showAddEventPopup || updateEvent) {
-      const isUpdate = !!updateEvent;
+    } else if (selectedEvent) {
       return (
-        <Popup open={showAddEventPopup || isUpdate} onClose={closePopup} position="right center">
-          <AddEvent isUpdate={isUpdate} updateEvent={updateEvent} />
+        <Popup class="crollspy-example" data-bs-spy="scroll" open={selectedEvent !== null} onClose={closePopup} position="right center">
+          
+          <PutEvent event={selectedEvent} />
           <button onClick={closePopup}>Close</button>
         </Popup>
       );
@@ -50,11 +69,7 @@ function MyCalendar({ events }) {
   };
 
   const handleSelectSlot = () => {
-    if (updateEvent) {
-      openPopup(updateEvent, true);
-    } else {
-      setShowAddEventPopup(true);
-    }
+    setShowAddEventPopup(true);
   };
 
   const formatDate = (date) => {
@@ -79,8 +94,8 @@ function MyCalendar({ events }) {
       },
       content: (
         <div>
-          <p>{Start: ${formattedStartDate}}</p>
-          <p>{End: ${formattedEndDate}}</p>
+          <p>{`Start: ${formattedStartDate}`}</p>
+          <p>{`End: ${formattedEndDate}`}</p>
         </div>
       ),
     };
