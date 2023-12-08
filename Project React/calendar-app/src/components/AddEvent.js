@@ -12,7 +12,7 @@ function AddEvent(){
     const[recurring_frequency,setRecurring_frequency] = useState("");
     const[shareeventwith,setShareEventWith]=useState("");
     const[access,setAccess]=useState("");
-    const[categoryId,setCategoryId] = useState("");
+    const[category,setCategory] = useState("");
     const[email,setEmail]=useState("");
 
     var event;
@@ -29,8 +29,8 @@ function AddEvent(){
         "recurring_frequency" : recurring_frequency,
         "shareeventwith": shareeventwith,
         "access": access,
-        "categoryId":categoryId,
-        "email":email
+        "category":category,
+        "email": localStorage.getItem("email")
         }
         console.log(event);
         fetch('https://localhost:7211/api/Event',{
@@ -44,6 +44,7 @@ function AddEvent(){
         }).then(
             ()=>{
                 alert("Event Added");
+                window.location.reload();
             }
         ).catch((e)=>{
             console.log(e)
@@ -54,22 +55,22 @@ function AddEvent(){
         <div className="inputcontainer">
             <h1>Event</h1>
             <br/>
-            <label className="form-control" for="ptitle">Title</label>
+            <label className="form-control" htmlFor="ptitle">Title</label>
             <input id="ptitle" type="text" className="form-control" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
             <br/>
-            <label className="form-control" for="pdescription">Description</label>
+            <label className="form-control" htmlFor="pdescription">Description</label>
             <textarea id="pdescription" className="form-control" value={description} onChange={(e) => {setDescription(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="pstartdatetime">StartDateTime</label>
+            <label className="form-control"  htmlFor="pstartdatetime">StartDateTime</label>
             <input id="pstartdatetime" type="datetime-local" className="form-control" value={startdatetime} onChange={(e)=>{setStartDateTime(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="penddatetime">EndDateTime</label>
+            <label className="form-control"  htmlFor="penddatetime">EndDateTime</label>
             <input id="penddatetime" type="datetime-local" className="form-control" value={enddatetime} onChange={(e)=>{setEndDateTime(e.target.value)}}/>
             <br/>  
-            <label className="form-control"  for="notificationdatetime">NotificationDateTime</label>
+            <label className="form-control"  htmlFor="notificationdatetime">NotificationDateTime</label>
             <input id="notificationdatetime" type="datetime-local" className="form-control" value={notificationdatetime} onChange={(e)=>{setNotificationDateTime(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="plocation">Location</label>
+            <label className="form-control"  htmlFor="plocation">Location</label>
             <input id="plocation" type="text" className="form-control" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
             <br/>
             <label className="form-boolean">IsRecurring</label>
@@ -82,7 +83,7 @@ function AddEvent(){
             <div>
                 <br/>
             <div className="form-group">
-            <label for="recurring_frequency">Recurring_frequency</label>
+            <label htmlFor="recurring_frequency">Recurring_frequency</label>
             <select id="recurring_frequency" className="form-control" value={recurring_frequency}
               onChange={(e) => setRecurring_frequency(e.target.value)}
             >
@@ -95,18 +96,23 @@ function AddEvent(){
             </div>
             )}
             <br/>
-            <label className="form-control"  for="pshareeventwith">ShareEventWith</label>
+            <label className="form-control"  htmlFor="pshareeventwith">ShareEventWith</label>
             <input id="pshareeventwith" type="text" className="form-control" value={shareeventwith} onChange={(e)=>{setShareEventWith(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="paccess">Access</label>
-            <input id="paccess" type="text" className="form-control" value={access} onChange={(e)=>{setAccess(e.target.value)}}/>
+            <label className="form-control" htmlFor="paccess">Access</label>
+            <select className="form-select" value={access} onChange={(e) => setAccess(e.target.value)}>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            </select>
             <br/>
-            <label className="form-control"  for="pcategoryId">CategoryId</label>
-            <input id="pcategoryId" type="number" className="form-control" value={categoryId} onChange={(e)=>{setCategoryId(e.target.value)}}/>
-            <br/>
-            <label className="form-control"  for="pemail">Email</label>
-            <input id="pemail" type="text" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-            <br/>
+            <label className="form-control" htmlFor="pcategory">Category</label>
+            <select className="form-select" value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+            <option value="work">Work</option>
+            <option value="family">Family</option>
+            <option value="personal">Personal</option>
+            </select>
+            <br/> 
+            
             <button onClick={clickAdd} className="btn btn-primary">Add Event</button>
         </div>
     );

@@ -1,28 +1,7 @@
-/* Add this CSS to your stylesheet */
-
-.navbar {
-    background-color: #f8f9fa; /* Light background color */
-  }
-  
-  .navbar-nav {
-    margin-left: auto;
-  }
-  
-  .nav-item {
-    margin-right: 10px; /* Adjust the spacing between navigation items */
-  }
-  
-  .nav-link {
-    color: #ffffff; /* Text color */
-    background-color: #007bff; /* Button color */
-    padding: 8px 16px; /* Adjust padding as needed */
-    border-radius: 5px; /* Add rounded corners */
-    text-decoration: none;
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-  }
-  
-  .nav-link:hover {
-    background-color: #0056b3; /* Button color on hover */
-  }
-  
-  /* Add additional styling based on your design requirements */
+.pad{
+  padding: 10px;
+}
+.line{
+  background: #ffffff;
+  border-bottom: 2px solid #000000;
+}

@@ -1,11 +1,12 @@
 ﻿namespace EventCalendarApp.Exceptions
 {
-    public class NameAlreadyExist : Exception
+    public class NoUsersAvailableException: Exception
     {
+
         string message;
-        public NameAlreadyExist()
+        public NoUsersAvailableException()
         {
-            message = "This Name Already Exist ";
+            message = "No Events are updating";
         }
         public override string Message => message;
     }

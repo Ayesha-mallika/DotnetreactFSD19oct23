@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
 import MyCalendar from './MyCalendar';
-
+import './Events.css';
 
 function Events() {
   const [email, setEmail] = useState(localStorage.getItem("email"));
@@ -28,11 +28,11 @@ function Events() {
     });
   }
 
-  var checkEvents = eventList.length > 0 ? true : false;
+  //var checkEvents = eventList.length > 0 ? true : false;
 
   return (
     <div className="searchBox">
-      <h1 className="alert alert-success">Events</h1>
+      <h1 className="alert alert-success">Event Calendar</h1>
       {/* <form>
         <br />
         <div class="row">
@@ -43,14 +43,16 @@ function Events() {
         </div>
       </form> */}
 
-      {checkEvents ? (
+      {/*{checkEvents ? (
         <div>
           <MyCalendar events={eventList}/>
         </div>
       ) : (
         <div>No events available yet</div>
-      )}
-
+      )}*/}
+      <div>
+          <MyCalendar events={eventList}/>
+        </div>
     </div>
   );
 }

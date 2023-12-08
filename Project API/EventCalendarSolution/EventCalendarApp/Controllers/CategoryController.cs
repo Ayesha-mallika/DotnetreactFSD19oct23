@@ -1,4 +1,4 @@
-﻿using EventCalendarApp.Exceptions;
+﻿/*using EventCalendarApp.Exceptions;
 using EventCalendarApp.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -82,7 +82,7 @@ namespace EventCalendarApp.Controllers
                 errorMessage = e.Message;
             }
             return BadRequest(errorMessage);
-        }*/
+        }
    
     }
-}
+}*/

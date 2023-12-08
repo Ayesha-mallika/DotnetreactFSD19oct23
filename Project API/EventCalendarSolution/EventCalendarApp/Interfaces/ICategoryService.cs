@@ -1,4 +1,4 @@
-﻿using EventCalendarApp.Models;
+﻿/*using EventCalendarApp.Models;
 
 namespace EventCalendarApp.Interfaces
 {
@@ -9,3 +9,4 @@ namespace EventCalendarApp.Interfaces
 
     }
 }
+*/

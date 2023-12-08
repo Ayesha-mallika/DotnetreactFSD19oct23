@@ -1,8 +1,9 @@
-﻿using EventCalendarApp.Models.DTOs;
+﻿using EventCalendarApp.Exceptions;
+using EventCalendarApp.Interfaces;
 using EventCalendarApp.Models;
+using EventCalendarApp.Models.DTOs;
 using System.Security.Cryptography;
 using System.Text;
-using EventCalendarApp.Interfaces;
 
 namespace EventCalendarApp.Services
 {
@@ -16,6 +17,16 @@ namespace EventCalendarApp.Services
             _repository = repository;
             _tokenService = tokenService;
         }
+
+        public List<User> GetUser(string email)
+        {
+            var user = _repository.GetAll().Where(c => c.Email == email).ToList();
+            if (user != null)
+            {
+                return user;
+            }
+            throw new NoUsersAvailableException();
+        }
         public UserDTO Login(UserDTO userDTO)
         {
             var user = _repository.GetById(userDTO.Email);
@@ -28,6 +39,7 @@ namespace EventCalendarApp.Services
                     if (user.Password[i] != userpass[i])
                         return null;
                 }
+                userDTO.Role = user.Role;
                 userDTO.Token = _tokenService.GetToken(userDTO);
                 userDTO.Password = "";
                 return userDTO;
@@ -54,7 +66,6 @@ namespace EventCalendarApp.Services
                 return userDTO;
             }
             return null;
-
         }
     }
 }

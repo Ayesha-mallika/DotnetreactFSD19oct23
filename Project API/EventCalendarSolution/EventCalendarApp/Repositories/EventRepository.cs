@@ -42,9 +42,16 @@ namespace EventCalendarApp.Repositories
         }
         public IList<Event> GetAll()
         {
-            if (_context.Events.Count() == 0)
+            try
+            {
+                if (_context.Events.Count() == 0)
+                    return null;
+                return _context.Events.ToList();
+            }
+            catch (Exception ex)
+            {
                 return null;
-            return _context.Events.ToList();
+            }
         }
 
         public Event GetById(int key)
@@ -76,6 +83,8 @@ namespace EventCalendarApp.Repositories
                 events.NotificationDateTime = entity.NotificationDateTime;
                 events.Location = entity.Location;
                 events.IsRecurring = entity.IsRecurring;
+                events.Access = entity.Access;
+                events.Category = entity.Category;
                 _context.Events.Update(events);
                 _context.SaveChanges();
                 return events;

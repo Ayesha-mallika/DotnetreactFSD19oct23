@@ -83,14 +83,6 @@ namespace EventCalendarApp
             builder.Services.AddScoped<ITokenService, TokenService>();
             builder.Services.AddScoped<IRepository<int, Event>, EventRepository>();
             builder.Services.AddScoped<IEventService, EventService>();
-            builder.Services.AddScoped<IRepository<int, Category>, CategoryRepository>();
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
-
-            /*builder.Services.AddScoped<IRepository<int, Reminder>, ReminderRepository>();
-            builder.Services.AddScoped<IReminderService, ReminderService>();
-            builder.Services.AddScoped<IRepository<int, Notification>, NotificationRepository>();
-            builder.Services.AddScoped<INotificationService, NotificationService>();*/
-
            
 
             var app = builder.Build();

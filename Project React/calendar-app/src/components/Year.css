@@ -44,7 +44,7 @@ body,
   height: 30px;
   text-align: center;
   line-height: 30px;
-  margin:2px;
+  margin:3px;
 }
 
 .date {
@@ -54,7 +54,7 @@ body,
   border-radius: 50px;
   border: none;
   outline: none;
-  margin: 2px;
+  margin: 3px;
 }
 
 .date.in-month:hover {

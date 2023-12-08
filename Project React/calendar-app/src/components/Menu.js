@@ -9,32 +9,27 @@ function Menu(){
 
 }
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <Link className="nav-link" to="/" >RegisterUser</Link>
-            </li>
-            <li className="nav-item ">
-              <Link className="nav-link" to="loginuser" >LoginUser</Link>
-            </li>
-            <li className="nav-item ">
-              <Link className="nav-link" to="mycalendar">MyCalendar</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/events" >Events</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/category" >Category</Link>
-            </li>
-            <li className="nav-item">
-            <Link class="dropdown-item" onClick={logout}>logout</Link>
-            </li>
-            
-          </ul>
-        </div>
-      </nav>
+      <nav class="navbar fixed-top navbar-expand-sm navbar-light line pad ">
+            <Link class="navbar-brand pad" to="/Home">My Calendar</Link>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">☰</button> 
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav ml-auto">
+                {localStorage.getItem("token")? "" : <div> <li className="nav-item active">
+                <Link className="nav-link" to="/login" >Register/Login</Link>
+              </li>
+              </div>}
+              {localStorage.getItem("token")? <li className="nav-item">
+              <Link className="nav-link" to="/GetAccess" >GetAccess</Link>
+            </li> : "" }
+            {localStorage.getItem("token")? <li className="nav-item">
+              <Link className="nav-link" to="/profile" >Profile</Link>
+            </li> : "" }
+            {localStorage.getItem("token")? <li className="nav-item">
+            <Link className="nav-link" onClick={logout}>logout</Link>
+            </li> :"" }
+                </ul>
+            </div>
+        </nav>
     );
 }
 

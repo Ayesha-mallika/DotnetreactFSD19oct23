@@ -5,24 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EventCalendarApp.Migrations
 {
-    public partial class eddg : Migration
+    public partial class ev : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    color = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -47,26 +33,20 @@ namespace EventCalendarApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StartDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    NotificationDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EndDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NotificationDateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsRecurring = table.Column<bool>(type: "bit", nullable: true),
                     Recurring_frequency = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShareEventWith = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Access = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Events", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Events_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Events_Users_Email",
                         column: x => x.Email,
@@ -74,11 +54,6 @@ namespace EventCalendarApp.Migrations
                         principalColumn: "Email",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Events_CategoryId",
-                table: "Events",
-                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_Email",
@@ -90,9 +65,6 @@ namespace EventCalendarApp.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Events");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

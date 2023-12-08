@@ -1,5 +1,8 @@
-﻿using EventCalendarApp.Interfaces;
+﻿using EventCalendarApp.Exceptions;
+using EventCalendarApp.Interfaces;
+using EventCalendarApp.Models;
 using EventCalendarApp.Models.DTOs;
+using EventCalendarApp.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,9 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EventCalendarApp.Controllers
 {
-    [EnableCors("reactApp")]
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("reactApp")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -50,8 +53,22 @@ namespace EventCalendarApp.Controllers
             {
                 return Ok(user);
             }
-
             return Unauthorized("Invalid username or password");
+        }
+        [HttpGet]
+        public ActionResult GetUser(string email)
+        {
+            string errorMessage = string.Empty;
+            try
+            {
+                var result = _userService.GetUser(email);
+                return Ok(result);
+            }
+            catch (NoUsersAvailableException e)
+            {
+                errorMessage = e.Message;
+            }
+            return BadRequest(errorMessage);
         }
     }
 }

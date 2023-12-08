@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
-import Year from './Year';  
-import DisplayEvents from './DisplayEvents';
+import Year from './Year';
 import Popup from 'reactjs-popup';
 import AddEvent from './AddEvent';
 import PutEvent from './PutEvents';
-
+import './MyCalendar.css';
 
 
 const localizer = momentLocalizer(moment);
@@ -15,6 +14,8 @@ const localizer = momentLocalizer(moment);
 function MyCalendar({ events }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showAddEventPopup, setShowAddEventPopup] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   const openPopup = (event) => {
     setSelectedEvent(event);
@@ -25,27 +26,24 @@ function MyCalendar({ events }) {
     setShowAddEventPopup(false);
   };
 
-  const handleAddEvent = (newEvent) => {
-    // Handle adding the new event to your events array or backend
-    // You might need to pass the newEvent to your calendar component
-    // to trigger a re-render with the added data
-    // For example:
-    // addEventFunction(newEvent);
-
-    // Close the popup or reset the form, etc.
+  const handleAddEvent = () => {
     closePopup();
+    // Add logic for handling new events if needed
   };
 
-  const handleUpdateEvent = (updatedEvent) => {
-    // Handle updating the event in your events array or backend
-    // You might need to pass the updatedEvent to your calendar component
-    // to trigger a re-render with the updated data
-    // For example:
-    // updateEventFunction(updatedEvent);
-
-    // Close the popup or reset the form, etc.
-    closePopup();
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredEvents = events.filter((event) => {
+    const includesSearchTerm = event.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === '' || event.category === selectedCategory;
+    return includesSearchTerm && matchesCategory;
+  });
 
   const renderPopup = () => {
     if (showAddEventPopup) {
@@ -58,39 +56,47 @@ function MyCalendar({ events }) {
     } else if (selectedEvent) {
       return (
         <Popup class="crollspy-example" data-bs-spy="scroll" open={selectedEvent !== null} onClose={closePopup} position="right center">
-          
           <PutEvent event={selectedEvent} />
           <button onClick={closePopup}>Close</button>
         </Popup>
       );
     }
-  
+
     return null;
   };
 
-  const handleSelectSlot = () => {
-    setShowAddEventPopup(true);
+  const formatDate = (date, view) => {
+    if (view === 'day') {
+      return moment(date).format('MM DD, YYYY hh:mm A');
+    } else if (view === 'week') {
+      return moment(date).format('MM DD, YYYY');
+    } else {
+      return moment(date).format('MM DD, YYYY hh:mm A');
+    }
   };
 
-  const formatDate = (date) => {
-    return moment(date).format('MM DD, YYYY hh:mm A');
+  const handleSelectSlot = (slotInfo) => {
+    const { action } = slotInfo;
+    if (action === 'click' || action === 'select') {
+      setShowAddEventPopup(true);
+    }
   };
 
   const eventStyle = (event) => {
     const colorMap = {
-      1: "#12eff3",
-      2: "#ed0249",
-      3: "#41d60a",
+      work: '#10296d',
+      family: '#ed0249',
+      personal: '#6f48eb',
     };
 
     const formattedStartDate = formatDate(event.startDateTime);
     const formattedEndDate = formatDate(event.endDateTime);
-    const backgroundColor = colorMap[event.categoryId] || 'green'; // Access categoryId property
+    const backgroundColor = colorMap[event.category] || '#10296d';
 
     return {
       style: {
         backgroundColor,
-        color: 'white', // Text color
+        color: 'white',
       },
       content: (
         <div>
@@ -102,11 +108,21 @@ function MyCalendar({ events }) {
   };
 
   return (
-    <div>
-      <h2>Event Calendar</h2>
+    <div className="calendar">
+      {/* <h3>Event Calendar</h3> */}
+      <div
+        className="search-container">
+        <input type="text" placeholder="Search Events" value={searchTerm} onChange={handleSearchChange} />
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">All Categories</option>
+          <option value="work">Work</option>
+          <option value="family">Family</option>
+          <option value="personal">Personal</option>
+        </select>
+      </div>
       <Calendar
         localizer={localizer}
-        events={events}
+        events={filteredEvents}
         defaultView="month"
         startAccessor="startDateTime"
         endAccessor="endDateTime"
@@ -122,6 +138,7 @@ function MyCalendar({ events }) {
           year: Year,
         }}
         messages={{ year: 'Year' }}
+        formats={{ dayFormat: 'D', weekdayFormat: 'ddd' }}
       />
       {renderPopup()}
     </div>

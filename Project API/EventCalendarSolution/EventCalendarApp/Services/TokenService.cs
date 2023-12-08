@@ -1,8 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using EventCalendarApp.Interfaces;
 using EventCalendarApp.Models.DTOs;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using EventCalendarApp.Interfaces;
 using System.Security.Claims;
 using System.Text;
 

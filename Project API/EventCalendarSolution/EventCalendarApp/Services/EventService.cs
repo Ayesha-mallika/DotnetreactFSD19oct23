@@ -6,6 +6,7 @@ using EventCalendarApp.Repositories;
 using Microsoft.Extensions.Logging;
 using System.Net.Mail;
 using System.Net;
+using System.Globalization;
 
 namespace EventCalendarApp.Services
 {
@@ -24,18 +25,18 @@ namespace EventCalendarApp.Services
         /// <returns>returns event</returns>
         public Event Add(Event events)
         {
-            //ScheduleAndSendEmail(DateTime.Parse(result.NotificationDateTime), result);
-            //// ScheduleAndSendEmail(DateTime.Parse(result.StartDateTime).Min(-5), result);
-            //return result;
+            
             var result = _eventRepository.Add(events);
             // Assuming ScheduleAndSendEmail has a signature like: void ScheduleAndSendEmail(DateTime notificationDateTime, EventResult result)
             ScheduleAndSendEmail(result.NotificationDateTime, result);
             return result;
         }
-        public void ScheduleAndSendEmail(DateTime targetTime, Event events)
+        public void ScheduleAndSendEmail(string targetTime, Event events)
         {
-            // Calculate the delay until the target time
-            int delayMilliseconds = (int)(targetTime - DateTime.Now).TotalMilliseconds;
+            // Assuming targetTime is in "yyyy-MM-dd HH:mm:ss" format
+            DateTime dateTime= DateTime.Parse(targetTime);
+            
+            int delayMilliseconds = (int)(dateTime - DateTime.Now).TotalMilliseconds;
 
             // Create a Timer with a callback function that sends the email
             Timer timer = new Timer(state =>
@@ -43,11 +44,13 @@ namespace EventCalendarApp.Services
                 // Your email sending logic here
                 string to = events.Email;
                 string subject = "Event Scheduled Email";
-                string body = ($"Dear All \n Greetings!!! \nYou have '{events.title}' starts from '{events.StartDateTime}' and ended at '{events.EndDateTime}' \n Don't miss it ");
+                string body = $"Dear All \n Greetings!!! \nYou have '{events.title}' starts from '{events.StartDateTime}' and ended at '{events.EndDateTime}' \n Don't miss it ";
 
                 SendNotificationEmail(to, subject, body);
             }, null, delayMilliseconds, Timeout.Infinite);
+            
         }
+
         public void SendNotificationEmail(string recipientEmail, string subject, string body)
         {
             try
@@ -67,7 +70,6 @@ namespace EventCalendarApp.Services
                 smtpClient.Port = 587;
                 smtpClient.Credentials = new NetworkCredential(email, password);
                 smtpClient.EnableSsl = true;
-                smtpClient.UseDefaultCredentials = false;
 
                 // Send the email
                 smtpClient.Send(mail);
@@ -102,7 +104,6 @@ namespace EventCalendarApp.Services
 
                 return true; // Sharing successful
             }
-
             return false; // Event not found
         }
         /// <summary>
@@ -111,15 +112,26 @@ namespace EventCalendarApp.Services
         /// <param name="userId">get the events list of specific user</param>
         /// <returns></returns>
         /// <exception cref="NoEventsAvailableException"></exception>
-        public List< Event> GetEvents(string userId)
+        public List<Event> GetEvents(string userId)
         {
-            var events = _eventRepository.GetAll().Where(c => c.Email == userId).ToList();
-           // var category = events.GroupBy(c => c.CategoryId).ToList();
-            if (events != null)
+            try
             {
-                return events;
+
+                var events = _eventRepository.GetAll().Where(c => c.Email == userId).ToList();
+                //var category = events.GroupBy(c => c.CategoryId).ToList();
+                if (events != null)
+                {
+                    return events;
+                }
+                else
+                {
+                    throw new NoEventsAvailableException();
+                }
             }
-            throw new NoEventsAvailableException();
+            catch (Exception e)
+            {
+                return null;
+            }
         }
         public IList<Event> GetPublicEvents(string access)
         {
@@ -153,13 +165,13 @@ namespace EventCalendarApp.Services
         /// <returns>updated event</returns>
         public Event Update(Event events)
         {
-            var EventId = _eventRepository.GetAll().FirstOrDefault(e => e.Id == events.Id);
-            if (EventId != null)
+            var EventTitle = _eventRepository.GetAll().FirstOrDefault(e => e.Id == events.Id);
+            if (EventTitle != null)
             {
                 var result = _eventRepository.Update(events);
                 if (result != null) return result;
             }
-            return EventId;
+            return EventTitle;
         }
     }
 }

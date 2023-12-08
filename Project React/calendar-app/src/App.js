@@ -1,30 +1,33 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import RegisterUser from './components/RegisterUser';
+import Register from './components/Register';
 import Events from './components/Events';
-import Category from './components/Category';
+import Categories from './components/Categories';
 import Menu from './components/Menu';
-import LoginUser from './components/LoginUser';
-import ParentComponent from './components/ParentComponent';
+import Login from './components/Login';
 import MyCalendar from './components/MyCalendar';
-import AddEvent from './components/AddEvent';
+import UserProfile from './components/UserProfile';
+import GetAccess from './components/GetAccess';
 
 function App() {
 
   return (
     <div>
-    { <BrowserRouter>
+      
+     <BrowserRouter>
       <Menu/>
-        <Routes>
-          
-          <Route path="loginUser" element={<LoginUser/>} />
-          <Route path="/" element={<RegisterUser/>} />
+      <div class="main">
+      <Routes>
+          <Route path="/" element={<Register/>} /> 
+          <Route path="login" element={<Login/>} /> 
           <Route path="events" element={<Events/>} />
-          <Route path="category" element={<Category/>} />
-          <Route path="MyCalendar" element={<MyCalendar/>} />
-          
-        </Routes>  
-      </BrowserRouter> }
+          <Route path="profile" element={<UserProfile/>} />
+          <Route path="GetAccess" element={<GetAccess/>} /> 
+        </Routes> 
+      </div>
+     
+         
+      </BrowserRouter>
     </div>
   );
 }

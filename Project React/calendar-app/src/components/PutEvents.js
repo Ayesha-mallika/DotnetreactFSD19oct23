@@ -1,8 +1,9 @@
 import { useState } from "react";
 import './AddEvent.css';
+import axios from "axios";
 
 function PutEvents({event}){
-    const [Id,setId] = useState(event.id);
+    const[Id,setId]=useState(event.id);
     const [title,setTitle] = useState(event.title);
     const [description,setDescription] = useState(event.description);
     const [startdatetime,setStartDateTime] = useState(event.startDateTime);
@@ -11,14 +12,15 @@ function PutEvents({event}){
     const[location,setLocation]=useState(event.location);
     const [isrecurring,setIsRecurring] = useState(false);
     const[recurring_frequency,setRecurring_frequency] = useState(event.recurring_frequency);
-    const[categoryId,setCategoryId] = useState(event.categoryId);
-    const[email,setEmail]=useState(event.email);
+    const[access,setAccess]=useState(event.access);
+    const[category,setCategory] = useState(event.category);
 
     var event;
     var clickAdd = ()=>{
+        console.log(event)
         alert('You clicked the button');
        event={
-        "Id":Id,
+        "Id":event.id,
         "title":title,
         "description":description,
         "startdatetime":startdatetime,
@@ -27,8 +29,9 @@ function PutEvents({event}){
         "location" : location,
         "isrecurring":isrecurring,
         "recurring_frequency" : recurring_frequency,
-        "categoryId":categoryId,
-        "email":email
+        "category":category,
+        "access":access,
+        "email": localStorage.getItem("email")
         }
         console.log(event);
         fetch('https://localhost:7211/api/Event',{
@@ -41,57 +44,52 @@ function PutEvents({event}){
         }).then(
             ()=>{
                 alert("Event Updated");
+                window.location.reload();
             }
         ).catch((e)=>{
             console.log(e)
         })
     }
     const Delete=()=>{
-        alert('You clicked the button');
-        event={
-         "Id":event.id
-         
-         }
-         console.log(event);
-         fetch('https://localhost:7211/api/Event',{
-             method:'DELETE',
-             headers:{
-                 'Accept':'application/json',
-                 'Content-Type':'application/json'
-             },
-             body:JSON.stringify(event)
-         }).then(
-             ()=>{
-                 alert("Event Deleted");
-             }
-         ).catch((e)=>{
-             console.log(e)
-         })
-    }
+        console.log(Id)
+        axios.delete('https://localhost:7211/api/Event',{
+            params:{
+                Id:event.id
+            }
+        })
+        .then((response)=>{
+            console.log(response);
+            alert("Event Deleted...!");
+        })
+        .catch((err)=>{
+            alert("could not delete");
+            console.log(err);
+        })
+    } 
 
     return(
         <div className="inputcontainer">
             <h1>Event</h1>
             <br/>
-            <label className="form-control" for="pId">Id</label>
+            {/*<label className="form-control" htmlFor="pId">Id</label>
             <input id="pId" type="number" className="form-control" value={Id} onChange={(e)=>{setId(e.target.value)}}/>
-            <br/>
-            <label className="form-control" for="ptitle">Title</label>
-            <input id="ptitle" type="text" className="form-control" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+            <br/>*/}
+            <label className="form-control" htmlFor="ptitle">Title</label>
+            <input id="ptitle" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
             <br/>
             <label className="form-control" htmlFor="pdescription">Description</label>
             <textarea id="pdescription" className="form-control" value={description} onChange={(e) => {setDescription(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="pstartdatetime">StartDateTime</label>
+            <label className="form-control"  htmlFor="pstartdatetime">StartDateTime</label>
             <input id="pstartdatetime" type="datetime-local" className="form-control" value={startdatetime} onChange={(e)=>{setStartDateTime(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="penddatetime">EndDateTime</label>
+            <label className="form-control"  htmlFor="penddatetime">EndDateTime</label>
             <input id="penddatetime" type="datetime-local" className="form-control" value={enddatetime} onChange={(e)=>{setEndDateTime(e.target.value)}}/>
             <br/>  
-            <label className="form-control"  for="notificationdatetime">NotificationDateTime</label>
+            <label className="form-control"  htmlFor="notificationdatetime">NotificationDateTime</label>
             <input id="notificationdatetime" type="datetime-local" className="form-control" value={notificationdatetime} onChange={(e)=>{setNotificationDateTime(e.target.value)}}/>
             <br/>
-            <label className="form-control"  for="plocation">Location</label>
+            <label className="form-control"  htmlFor="plocation">Location</label>
             <input id="plocation" type="text" className="form-control" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
             <br/>
             <label className="form-boolean">IsRecurring</label><br/>
@@ -104,7 +102,7 @@ function PutEvents({event}){
             <div>
                 <br/>
             <div className="form-group">
-            <label for="recurring_frequency">Recurring_frequency</label>
+            <label htmlFor="recurring_frequency">Recurring_frequency</label>
             <select
               id="recurring_frequency"
               className="form-control"
@@ -119,12 +117,19 @@ function PutEvents({event}){
             </div>
             )}
             <br/>
-            <label className="form-control"  for="pcategoryId">CategoryId</label>
-            <input id="pcategoryId" type="number" className="form-control" value={categoryId} onChange={(e)=>{setCategoryId(e.target.value)}}/>
+            <label className="form-control" htmlFor="paccess">Access</label>
+            <select className="form-select" value={access} onChange={(e) => setAccess(e.target.value)}>
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            </select>
             <br/>
-            <label className="form-control"  for="pemail">Email</label>
-            <input id="pemail" type="text" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
-            <br/>
+            <label className="form-control"  htmlFor="pcategory">Category</label>
+            <select className="form-select" value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+            <option value="work">Work</option>
+            <option value="family">Family</option>
+            <option value="personal">Personal</option>
+            </select>
+            <br/> 
             <button onClick={clickAdd} className="btn btn-primary">Update Event</button>
             <button onClick={Delete} className="btn btn-danger">Delete Event</button>
        </div>
