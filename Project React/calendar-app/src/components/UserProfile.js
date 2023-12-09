@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import './UserProfile.css';
 
 function UserProfile(){
     const [user,setUser]=useState({});
@@ -26,8 +27,9 @@ function UserProfile(){
     }
 
 return(
+    <div className="login">
     <div>
-        <form className="registerForm">
+        <form className="registerForms">
             <label className="form-control">Email</label>
             <input type="text" className="form-control" value={user.email} disabled/>
            <br/>
@@ -42,6 +44,7 @@ return(
             <br/>
             
         </form>
+    </div>
     </div>
 )
     

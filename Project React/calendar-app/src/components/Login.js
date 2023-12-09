@@ -26,9 +26,12 @@ function Login(){
         })
     } 
 return(
-    <div class="login">
-    <div class="log">
+
+    <div className="login">
+       
+    <div className="log">
         <form className="loginForm">
+            <h3>Login</h3>
             <label className="form-control">Email</label>
             <input type="email" className="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             <label className="form-control">Password</label>

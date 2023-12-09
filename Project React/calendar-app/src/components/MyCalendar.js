@@ -109,7 +109,6 @@ function MyCalendar({ events }) {
 
   return (
     <div className="calendar">
-      {/* <h3>Event Calendar</h3> */}
       <div
         className="search-container">
         <input type="text" placeholder="Search Events" value={searchTerm} onChange={handleSearchChange} />
@@ -130,7 +129,7 @@ function MyCalendar({ events }) {
         onSelectEvent={(event) => openPopup(event)}
         onSelectSlot={handleSelectSlot}
         eventPropGetter={(event) => eventStyle(event)}
-        style={{ height: 500, width: 900 }}
+        style={{ height: 600, width: 1200 }}
         views={{
           day: true,
           week: true,

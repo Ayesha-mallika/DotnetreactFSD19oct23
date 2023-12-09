@@ -32,7 +32,7 @@ function Events() {
 
   return (
     <div className="searchBox">
-      <h1 className="alert alert-success">Event Calendar</h1>
+      {/* <h1 className="alert alert-success">Event Calendar</h1> */}
       {/* <form>
         <br />
         <div class="row">

@@ -35,8 +35,8 @@ function GetAccess() {
 
   return (
     <div
-      className="search-container">
-      <h1 className="alert alert-success">Events</h1>
+      className="search-containers">
+      {/* <h1 className="alert alert-success">Events</h1> */}
       <form>
         <br />
         <div className="row">
@@ -47,12 +47,16 @@ function GetAccess() {
         </div>
       </form>
 
+      <div>
+
       <h2>Public Events</h2>
       {publicEvents.length > 0 ? (
         <MyCalendar events={publicEvents} />
       ) : (
         <div>No public events available yet</div>
       )}
+      </div>
+      <div>
 
       <h2>Private Events</h2>
       {privateEvents.length > 0 ? (
@@ -60,6 +64,7 @@ function GetAccess() {
       ) : (
         <div>No private events available yet</div>
       )}
+    </div>
     </div>
   );
 }

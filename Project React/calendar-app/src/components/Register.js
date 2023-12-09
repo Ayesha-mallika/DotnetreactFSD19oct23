@@ -52,8 +52,9 @@ function Register(){
         })
     }
     return(
+        <div className="login">
         <div>
-            <form className="registerForm">
+            <form className="registerForms">
             <label className="form-control">Email</label>
             <input type="text" className="form-control" value={email}
                     onChange={(e)=>{setEmail(e.target.value)}}/>
@@ -77,6 +78,7 @@ function Register(){
             <br/>
             <p><strong>Already have an account?  <a href="/Login">Login</a>.</strong></p>
             </form>
+            </div>
             </div>
     );
 }

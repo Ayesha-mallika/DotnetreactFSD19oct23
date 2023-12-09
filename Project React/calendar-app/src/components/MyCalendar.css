@@ -7,13 +7,12 @@ h3 {
 .calendar {
   display: flex;
   flex-direction: column;
-  max-width:1600px;
+  /* max-width:600px; */
   align-items: center;
   justify-content: center;
   text-align: center;
   margin-top: 15px; /* Adjust the margin as needed */
 }
-
 
 .search-container {
   margin-bottom: 15px; /* Adjust the margin as needed */
@@ -24,31 +23,32 @@ input, select {
   margin-right: 10px; /* Adjust the margin as needed */
 }
 
-/* Add more styles as needed */
 .search-container {
-  /* display: flex; */
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
   max-width:100%;
   position: relative;
-  display: block;
+  /* display: block; */
 }
 
 .search-container select{
-  align-items: center;
+  align-items: left;
   padding: 5px;
-  Float:right;
+  Float:left;
   flex: 1;
+  margin-left: 10px;
 }
-
 
 .search-container input {
   align-items: center;
-  padding: 5px;
+  padding: 4px;
   margin-right: 0;
   display: flex;
   Float:right;
   flex: 1;
+  margin-right: 20px;
 }
 
 .filter-bar {
@@ -90,9 +90,9 @@ input, select {
 /* Calendar styling */
 .rbc-calendar {
   max-width: 100%;
-  background-color: #fff;
+  background-color:#fff ;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
 

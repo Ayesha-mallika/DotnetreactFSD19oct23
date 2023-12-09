@@ -1,21 +1,29 @@
 .registerForm {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: aliceblue;
-  }
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #a28199;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ede0ea;
   
-  .form-control {
-    margin-bottom: 10px;
-  }
-  
-  .form-select {
-    margin-bottom: 10px;
-  }
-  
-  .button {
-    margin-right: 10px;
-  }
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+.form-select {
+  margin-bottom: 10px;
+}
+
+.button {
+  margin-right: 10px;
+}
+.login{
+  background-image: url('C:\Users\dell\Pictures\log.jpg');  
+   background-repeat: no-repeat;
+ background-size: cover;
+ /* Filter:blur(2px); */
+ Height:800px;
+}
