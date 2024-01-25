@@ -1,10 +1,11 @@
 .registerForms {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+    max-width: 300px;
+    margin: auto;
+    padding: 40px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #cd9faf;
 }
 
 .form-control {
@@ -16,6 +17,14 @@ label {
     font-weight: bold;
 }
 
+.User{
+    background-image: url('C:\Users\dell\Pictures\PROf.jpg');  
+     background-repeat: no-repeat;
+   background-size: cover;
+   /* Filter:blur(2px); */
+   Height:800px;
+     
+ }
 input {
     width: 100%;
     padding: 8px;

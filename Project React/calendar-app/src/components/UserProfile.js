@@ -27,7 +27,7 @@ function UserProfile(){
     }
 
 return(
-    <div className="login">
+    <div className="User">
     <div>
         <form className="registerForms">
             <label className="form-control">Email</label>

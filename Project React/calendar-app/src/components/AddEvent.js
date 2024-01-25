@@ -16,40 +16,56 @@ function AddEvent(){
     const[email,setEmail]=useState("");
 
     var event;
-    var clickAdd = ()=>{
+    var clickAdd = () => {
         alert('You clicked the button');
-       event={
-        "title":title,
-        "description":description,
-        "startdatetime":startdatetime,
-        "enddatetime" : enddatetime,
-        "notificationdatetime" : notificationdatetime,
-        "location" : location,
-        "isrecurring":isrecurring,
-        "recurring_frequency" : recurring_frequency,
-        "shareeventwith": shareeventwith,
-        "access": access,
-        "category":category,
-        "email": localStorage.getItem("email")
+    
+        // Get the current date
+        const currentDate = new Date();
+    
+        // Convert startdatetime to a Date object
+        const startDate = new Date(startdatetime);
+    
+        // Check if the startdatetime is in the past
+        if (startDate < currentDate) {
+            alert("Cannot add events for past dates.");
+            return;
         }
+    
+        // Proceed to add the event
+        event = {
+            "title": title,
+            "description": description,
+            "startdatetime": startdatetime,
+            "enddatetime": enddatetime,
+            "notificationdatetime": notificationdatetime,
+            "location": location,
+            "isrecurring": isrecurring,
+            "recurring_frequency": recurring_frequency,
+            "shareeventwith": shareeventwith,
+            "access": access,
+            "category": category,
+            "email": localStorage.getItem("email")
+        };
+    
         console.log(event);
-        fetch('https://localhost:7211/api/Event',{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Content-Type':'application/json',
-                'Authorization':'Bearer ' +localStorage.getItem("token")
+    
+        fetch('https://localhost:7211/api/Event', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("token")
             },
-            body:JSON.stringify(event)
+            body: JSON.stringify(event)
         }).then(
-            ()=>{
+            () => {
                 alert("Event Added");
                 window.location.reload();
             }
-        ).catch((e)=>{
-            console.log(e)
-        })
-    }
+        ).catch((e) => {
+            console.log(e);
+        });
+    };
 
     return(
         <div className="inputcontainer">
@@ -83,14 +99,14 @@ function AddEvent(){
             <div>
                 <br/>
             <div className="form-group">
-            <label htmlFor="recurring_frequency">Recurring_frequency</label>
-            <select id="recurring_frequency" className="form-control" value={recurring_frequency}
-              onChange={(e) => setRecurring_frequency(e.target.value)}
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
-              <option value="custom">Custom</option>
+            <label for="recurring_frequency">Recurring_frequency</label>
+            <select id="recurring_frequency" className="form-select" value={recurring_frequency}
+              onChange={(e) => setRecurring_frequency(e.target.value)}>
+              <option> Choose Recurrence--- </option>
+              <option value="everyday">EveryDay</option>
+              <option value="everyweek">EveryWeek</option>
+              <option value="everymonth">EveryMonth</option>
+              <option value="everyyear">EveryYear</option>
             </select>
             </div>
             </div>
@@ -99,20 +115,21 @@ function AddEvent(){
             <label className="form-control"  htmlFor="pshareeventwith">ShareEventWith</label>
             <input id="pshareeventwith" type="text" className="form-control" value={shareeventwith} onChange={(e)=>{setShareEventWith(e.target.value)}}/>
             <br/>
-            <label className="form-control" htmlFor="paccess">Access</label>
+            <label className="form-control"  htmlFor="paccess">Access</label>
             <select className="form-select" value={access} onChange={(e) => setAccess(e.target.value)}>
+            <option> Choose Access--- </option>  
             <option value="public">Public</option>
             <option value="private">Private</option>
             </select>
             <br/>
-            <label className="form-control" htmlFor="pcategory">Category</label>
+            <label className="form-control"  htmlFor="pcategory">Category</label>
             <select className="form-select" value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+            <option> Choose Category--- </option>  
             <option value="work">Work</option>
             <option value="family">Family</option>
             <option value="personal">Personal</option>
             </select>
             <br/> 
-            
             <button onClick={clickAdd} className="btn btn-primary">Add Event</button>
         </div>
     );

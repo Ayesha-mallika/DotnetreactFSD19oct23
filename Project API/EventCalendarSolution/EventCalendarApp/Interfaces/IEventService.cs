@@ -12,6 +12,7 @@ namespace EventCalendarApp.Interfaces
         /// <returns></returns>
         List<Event> GetEvents(string userId);
 
+        List<Event> GetEvents();
         bool ShareEvent(int eventId, List<string> recipientEmails);
 
         IList<Event> GetPublicEvents(string Access);

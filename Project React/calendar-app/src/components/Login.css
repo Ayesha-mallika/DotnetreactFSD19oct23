@@ -6,14 +6,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #dac3dd;
+    background-color: #b493b4;
     background-image: url('C:\Users\dell\Pictures\pur.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 20px; /* Adjust as needed */
-    /* Height:400px;*/
-} 
+}
 
 .login{
    background-image: url('C:\Users\dell\Pictures\log.jpg');  

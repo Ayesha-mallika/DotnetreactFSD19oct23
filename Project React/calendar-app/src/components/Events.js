@@ -28,28 +28,10 @@ function Events() {
     });
   }
 
-  //var checkEvents = eventList.length > 0 ? true : false;
+ 
 
   return (
-    <div className="searchBox">
-      {/* <h1 className="alert alert-success">Event Calendar</h1> */}
-      {/* <form>
-        <br />
-        <div class="row">
-          <input id="pemail" type="text" class="form-control" value={email} onChange={(e) => { setEmail(e.target.value) }} />
-        </div>
-        <div class="row">
-          <button className="btn btn-success" onClick={getEvents}>Get All Events</button>
-        </div>
-      </form> */}
-
-      {/*{checkEvents ? (
-        <div>
-          <MyCalendar events={eventList}/>
-        </div>
-      ) : (
-        <div>No events available yet</div>
-      )}*/}
+    <div className="events">
       <div>
           <MyCalendar events={eventList}/>
         </div>

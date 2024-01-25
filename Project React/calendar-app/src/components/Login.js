@@ -28,7 +28,6 @@ function Login(){
 return(
 
     <div className="login">
-       
     <div className="log">
         <form className="loginForm">
             <h3>Login</h3>
@@ -43,7 +42,6 @@ return(
         </form>
     </div>
 </div>
-
 );
 
 }

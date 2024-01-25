@@ -54,7 +54,7 @@ function Register(){
     return(
         <div className="login">
         <div>
-            <form className="registerForms">
+            <form className="registerForm">
             <label className="form-control">Email</label>
             <input type="text" className="form-control" value={email}
                     onChange={(e)=>{setEmail(e.target.value)}}/>

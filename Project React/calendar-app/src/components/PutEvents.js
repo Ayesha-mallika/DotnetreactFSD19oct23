@@ -60,6 +60,7 @@ function PutEvents({event}){
         .then((response)=>{
             console.log(response);
             alert("Event Deleted...!");
+            window.location.reload();
         })
         .catch((err)=>{
             alert("could not delete");
@@ -75,7 +76,7 @@ function PutEvents({event}){
             <input id="pId" type="number" className="form-control" value={Id} onChange={(e)=>{setId(e.target.value)}}/>
             <br/>*/}
             <label className="form-control" htmlFor="ptitle">Title</label>
-            <input id="ptitle" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
+            <input id="ptitle" type="text" className="form-control" value={title} onChange={(e)=>{setTitle(e.target.value)}}/>
             <br/>
             <label className="form-control" htmlFor="pdescription">Description</label>
             <textarea id="pdescription" className="form-control" value={description} onChange={(e) => {setDescription(e.target.value)}}/>
@@ -92,7 +93,7 @@ function PutEvents({event}){
             <label className="form-control"  htmlFor="plocation">Location</label>
             <input id="plocation" type="text" className="form-control" value={location} onChange={(e)=>{setLocation(e.target.value)}}/>
             <br/>
-            <label className="form-boolean">IsRecurring</label><br/>
+            <label className="form-boolean">IsRecurring</label>
             <select className="form-boolean" onChange={(e) => setIsRecurring(e.target.value === 'true')}>
               <option value="false">No</option>
               <option value="true">Yes</option>
@@ -102,29 +103,28 @@ function PutEvents({event}){
             <div>
                 <br/>
             <div className="form-group">
-            <label htmlFor="recurring_frequency">Recurring_frequency</label>
-            <select
-              id="recurring_frequency"
-              className="form-control"
-              value={recurring_frequency}
-              onChange={(e) => setRecurring_frequency(e.target.value)}
-            >
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-              <option value="monthly">Monthly</option>
+            <label for="recurring_frequency">Recurring_frequency</label>
+            <select id="recurring_frequency" className="form-control" value={recurring_frequency}
+              onChange={(e) => setRecurring_frequency(e.target.value)}>
+              <option value="everyday">EveryDay</option>
+              <option value="everyweek">EveryWeek</option>
+              <option value="everymonth">EveryMonth</option>
+              <option value="everyyear">EveryYear</option>
             </select>
             </div>
             </div>
             )}
             <br/>
-            <label className="form-control" htmlFor="paccess">Access</label>
+            <label className="form-control"  htmlFor="paccess">Access</label>
             <select className="form-select" value={access} onChange={(e) => setAccess(e.target.value)}>
+            <option> Choose Access--- </option>  
             <option value="public">Public</option>
             <option value="private">Private</option>
             </select>
             <br/>
             <label className="form-control"  htmlFor="pcategory">Category</label>
             <select className="form-select" value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+            <option> Choose Category--- </option>  
             <option value="work">Work</option>
             <option value="family">Family</option>
             <option value="personal">Personal</option>

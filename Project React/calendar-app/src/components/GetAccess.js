@@ -24,7 +24,6 @@ function GetAccess() {
         // Separate events into public and private based on the 'access' property
         const publicEvents = posts.filter(event => event.access === 'public');
         const privateEvents = posts.filter(event => event.access === 'private');
-
         setPublicEvents(publicEvents);
         setPrivateEvents(privateEvents);
       })
@@ -36,19 +35,20 @@ function GetAccess() {
   return (
     <div
       className="search-containers">
-      {/* <h1 className="alert alert-success">Events</h1> */}
       <form>
         <br />
-        <div className="row">
-          <input id="paccess" type="text" className="form-control" value={access} onChange={(e) => { setAccess(e.target.value) }} />
-        </div>
+        <label className="form-control"  htmlFor="paccess">Access</label>
+            <select className="form-select" value={access} onChange={(e) => setAccess(e.target.value)}>
+            <option>..Choose Access...</option>  
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            </select>
         <div className="row">
           <button className="btn btn-success" onClick={getEvents}>Get All Events</button>
         </div>
       </form>
-
       <div>
-
+        <br/>
       <h2>Public Events</h2>
       {publicEvents.length > 0 ? (
         <MyCalendar events={publicEvents} />

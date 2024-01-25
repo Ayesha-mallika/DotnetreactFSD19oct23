@@ -16,7 +16,6 @@ namespace EventCalendarApp.Services
         public EventService(IRepository<int, Event> eventRepository)
         {
             _eventRepository = eventRepository;
-
         }
         /// <summary>
         /// add the event to the database
@@ -25,17 +24,18 @@ namespace EventCalendarApp.Services
         /// <returns>returns event</returns>
         public Event Add(Event events)
         {
-            
+
             var result = _eventRepository.Add(events);
             // Assuming ScheduleAndSendEmail has a signature like: void ScheduleAndSendEmail(DateTime notificationDateTime, EventResult result)
             ScheduleAndSendEmail(result.NotificationDateTime, result);
+            ShareEvent(result.Id, new List<string> { events.ShareEventWith });
             return result;
         }
         public void ScheduleAndSendEmail(string targetTime, Event events)
         {
             // Assuming targetTime is in "yyyy-MM-dd HH:mm:ss" format
-            DateTime dateTime= DateTime.Parse(targetTime);
-            
+            DateTime dateTime = DateTime.Parse(targetTime);
+
             int delayMilliseconds = (int)(dateTime - DateTime.Now).TotalMilliseconds;
 
             // Create a Timer with a callback function that sends the email
@@ -48,7 +48,7 @@ namespace EventCalendarApp.Services
 
                 SendNotificationEmail(to, subject, body);
             }, null, delayMilliseconds, Timeout.Infinite);
-            
+
         }
 
         public void SendNotificationEmail(string recipientEmail, string subject, string body)
@@ -116,7 +116,6 @@ namespace EventCalendarApp.Services
         {
             try
             {
-
                 var events = _eventRepository.GetAll().Where(c => c.Email == userId).ToList();
                 //var category = events.GroupBy(c => c.CategoryId).ToList();
                 if (events != null)
@@ -142,7 +141,15 @@ namespace EventCalendarApp.Services
             }
             throw new NoEventsAvailableException();
         }
-
+        public List<Event> GetEvents()
+        {
+            var events = _eventRepository.GetAll();
+            if (events != null)
+            {
+                return events.ToList();
+            }
+            throw new NoEventsAvailableException();
+        }
         /// <summary>
         /// removing the events from repository
         /// </summary>
