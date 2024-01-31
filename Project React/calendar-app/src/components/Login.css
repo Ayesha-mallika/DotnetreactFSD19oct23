@@ -1,26 +1,21 @@
 
-.loginForm {
+.login{
     max-width: 300px;
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #b493b4;
-    background-image: url('C:\Users\dell\Pictures\pur.jpg'); 
+    /* background-image: url('C:\Users\dell\Pictures\pur.jpg');  */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.login{
-   background-image: url('C:\Users\dell\Pictures\log.jpg');  
-    background-repeat: no-repeat;
-  background-size: cover;
-  /* Filter:blur(2px); */
-  Height:800px;
-    
-}
+
 .form-group {
     max-width: 300px;
     margin: auto;

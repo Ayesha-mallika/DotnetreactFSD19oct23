@@ -1,4 +1,0 @@
-C:\Users\dell\Desktop\Hexaware\training\Day9\SolidSolution\SolidApp\obj\Debug\net6.0\SolidApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\dell\Desktop\Hexaware\training\Day9\SolidSolution\SolidApp\obj\Debug\net6.0\SolidApp.AssemblyInfoInputs.cache
-C:\Users\dell\Desktop\Hexaware\training\Day9\SolidSolution\SolidApp\obj\Debug\net6.0\SolidApp.AssemblyInfo.cs
-C:\Users\dell\Desktop\Hexaware\training\Day9\SolidSolution\SolidApp\obj\Debug\net6.0\SolidApp.csproj.CoreCompileInputs.cache

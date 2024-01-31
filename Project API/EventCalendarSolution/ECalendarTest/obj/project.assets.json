@@ -9464,34 +9464,45 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dell\\.nuget\\packages\\": {}
+    "C:\\Users\\2000112369\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dell\\Desktop\\Hexaware\\training\\Project API\\EventCalendarSolution\\ECalendarTest\\ECalendarTest.csproj",
+      "projectUniqueName": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\ECalendarTest\\ECalendarTest.csproj",
       "projectName": "ECalendarTest",
-      "projectPath": "C:\\Users\\dell\\Desktop\\Hexaware\\training\\Project API\\EventCalendarSolution\\ECalendarTest\\ECalendarTest.csproj",
-      "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dell\\Desktop\\Hexaware\\training\\Project API\\EventCalendarSolution\\ECalendarTest\\obj\\",
+      "projectPath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\ECalendarTest\\ECalendarTest.csproj",
+      "packagesPath": "C:\\Users\\2000112369\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\ECalendarTest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\2000112369\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\dell\\Desktop\\Hexaware\\training\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {
-              "projectPath": "C:\\Users\\dell\\Desktop\\Hexaware\\training\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj"
+            "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {
+              "projectPath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj"
             }
           }
         }
@@ -9543,7 +9554,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

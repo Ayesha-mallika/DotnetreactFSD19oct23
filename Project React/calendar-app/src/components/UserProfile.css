@@ -18,7 +18,7 @@ label {
 }
 
 .User{
-    background-image: url('C:\Users\dell\Pictures\PROf.jpg');  
+    /* background-image: url('C:\Users\dell\Pictures\PROf.jpg');   */
      background-repeat: no-repeat;
    background-size: cover;
    /* Filter:blur(2px); */

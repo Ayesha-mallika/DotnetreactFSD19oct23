@@ -86,7 +86,7 @@ function MyCalendar({ events }) {
     const colorMap = {
       work: '#10296d',
       family: '#ed0249',
-      personal: '#6f48eb',
+      personal: '#702670',
     };
 
     const formattedStartDate = formatDate(event.startDateTime);
@@ -129,7 +129,7 @@ function MyCalendar({ events }) {
         onSelectEvent={(event) => openPopup(event)}
         onSelectSlot={handleSelectSlot}
         eventPropGetter={(event) => eventStyle(event)}
-        style={{ height: 600, width: 1200 }}
+        style={{ height: 500, width: 1000 }}
         views={{
           month: true,
           year: Year,
