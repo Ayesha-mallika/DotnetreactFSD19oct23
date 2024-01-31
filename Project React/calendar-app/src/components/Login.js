@@ -12,6 +12,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
+import './Login.css';
 
 const theme = createTheme();
 const defaultTheme = createTheme();
@@ -66,6 +67,7 @@ function Login() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            
         }}
         >
         
@@ -106,9 +108,15 @@ function Login() {
                 type="submit"
                 fullWidth
                 variant="contained"
-                color="primary"
+                background-color="#009688"
                 onClick={login}
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3,
+                   mb: 2,
+                  display:'flex',
+                  alignltems:'center',
+                  // justifyContent:'space-between',
+                  backgroundColor:'#009688',
+                 }}
               >
                 Sign In
               </Button>
@@ -120,7 +128,7 @@ function Login() {
                 </Grid>
                 <Grid item>
                   <Link href="#" variant="body2">
-                  {"New User?"}<strong> <a href="/">Register</a></strong>
+                  {"New User?"}<strong> <a href="/"><b>Register</b></a></strong>
                   </Link>
                 </Grid>
               </Grid>

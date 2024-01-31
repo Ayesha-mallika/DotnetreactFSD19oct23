@@ -84,7 +84,7 @@ function MyCalendar({ events }) {
 
   const eventStyle = (event) => {
     const colorMap = {
-      work: '#10296d',
+      work: '#07e9d2',
       family: '#ed0249',
       personal: '#702670',
     };

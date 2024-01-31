@@ -124,17 +124,28 @@ function Register() {
               sx={{ marginBottom: 1 }}
             />
             <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+                type="submit"
+                fullWidth
+                variant="contained"
+                background-color="#009688"
+               
+                sx={{ mt: 3,
+                   mb: 2,
+                  display:'flex',
+                  alignltems:'center',
+                  // justifyContent:'space-between',
+                  backgroundColor:'#009688',
+                  '&:hover':{
+                    backgroundColor:'#009688',
+                  },
+                 }}
+              >
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+                  Already have an account? <b>Sign in</b>
                 </Link>
               </Grid>
             </Grid>

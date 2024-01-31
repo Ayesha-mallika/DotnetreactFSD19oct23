@@ -8,6 +8,7 @@
 
 .navbar {
   background-color: #c6b4c4; /* Set your desired background color */
+ 
 }
 
 .navbar-brand {
@@ -15,7 +16,8 @@
 }
 
 .navbar-toggler {
-  background-color: #a165a7; /* Set your desired color for the toggle button */
+  background-color: #a165a7; 
+  
 }
 
 .navbar-nav {
