@@ -1,11 +1,12 @@
-.registerForms {
-    max-width: 300px;
+.profile {
+    max-width: 280px;
     margin: auto;
     padding: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #cd9faf;
+    background-color: #8fd1cc;
+    height:500px;
 }
 
 .form-control {
@@ -21,6 +22,7 @@ label {
     /* background-image: url('C:\Users\dell\Pictures\PROf.jpg');   */
      background-repeat: no-repeat;
    background-size: cover;
+   background-color: whitesmoke;
    /* Filter:blur(2px); */
    Height:800px;
      

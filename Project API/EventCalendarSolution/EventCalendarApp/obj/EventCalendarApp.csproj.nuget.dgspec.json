@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {}
+    "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {
+    "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
+        "projectUniqueName": "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
         "projectName": "EventCalendarApp",
-        "projectPath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
+        "projectPath": "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
         "packagesPath": "C:\\Users\\2000112369\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\obj\\",
+        "outputPath": "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

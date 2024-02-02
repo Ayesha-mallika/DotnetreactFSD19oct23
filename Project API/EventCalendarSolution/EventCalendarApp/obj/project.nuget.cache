@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "a1PLzh8Dw1YicmTn5iEWCkLBw06frlme+e7za3ssb99JbbQxva5eP/oaxNCwZ3fB9ad4k50n/a5t4oc4VrRwmQ==",
+  "dgSpecHash": "vUmQp1zXqYf6Dw9yi2OPe1M2qnD2SL796bqI+ZmNFYPtTpgnFCdM4mHn9AOYh3Kzh6mmZngCgZG/vkbTJJsOlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\2000112369\\Event Calender App\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
+  "projectFilePath": "C:\\Users\\2000112369\\EventCalendarApp\\DotnetreactFSD19oct23\\Project API\\EventCalendarSolution\\EventCalendarApp\\EventCalendarApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2000112369\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\2000112369\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
