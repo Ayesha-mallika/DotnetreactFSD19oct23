@@ -16,7 +16,7 @@ namespace EventCalendarApp.Models
         public string? Location { get; set; }//location of an event
         public bool? IsRecurring { get; set; }//is the event is repeating or not
         public string? Recurring_frequency { get; set; }//if event is repeating what is its frequency
-       // public string? ShareEventWith { get; set; }
+        public string? ShareEventWith { get; set; }
         public string? Access { get; set; }//whether the event should be in public or private
         public string Category { get; set; }
         public string Email { get; set; }//Foreign key of user
